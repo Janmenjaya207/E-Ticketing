@@ -1,0 +1,492 @@
+﻿@model EmployeeTimesheet.Models.ComplainModel
+@{
+    ViewBag.Title = "complain";
+    Layout = "~/Views/Shared/TSLayout.cshtml";
+}
+
+<h2></h2>
+<style>
+    .tdwidth {
+        width: 50% !important;
+    }
+
+    @@media (max-width:576px) {
+        .mts {
+            margin-top: 0px !important;
+        }
+    }
+
+    .mts {
+        margin-top: 28px;
+    }
+
+    label {
+        color: #212121;
+        font-weight: 600 !important;
+    }
+
+    a {
+        color: #e0ba00;
+    }
+
+    .rules {
+        color: #b56800 !important;
+        font-weight: 700;
+    }
+
+    @@media (min-width:576px) {
+        .modal-dialog1 {
+            max-width: 800px;
+            margin: 1.75rem auto
+        }
+    }
+
+    .modaloverflow {
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    table.dataTable thead > tr > th {
+        color: #fff;
+        background-color: #223035;
+    }
+
+    .table th {
+        padding: 7px !important;
+    }
+
+    .btn1 {
+        padding: 2px 6px;
+    }
+
+
+    .btn-group {
+        box-shadow: none;
+    }
+
+        .btn-group > .btn-group:not(:first-child) > .btn, .btn-group > .btn:not(:first-child) {
+            border-top-left-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+        }
+
+        .btn-group > .btn-group:not(:last-child) > .btn, .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }
+</style>
+<div class="clearfix"></div>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i>Search User</div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Mobile:</label>
+                                    <input id="SearchMobile" name="SearchMobile" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <button type="button" id="btnsubmit" class="btn btn-primary mts" onclick="BindData()">Search</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered dataTable">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Mobile</td>
+                                            <td>Email</td>
+                                            <td>Address</td>
+                                            <td>Pin</td>
+                                            <td>Aadhar No</td>
+                                            <td>ULB</td>
+                                            <td>Action</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="searchdata"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Lodge Complain</div>
+                    <div class="card-body">
+                        @{string confirmMessage = Convert.ToString(TempData["Message"]);
+                            string warningMessage = Convert.ToString(TempData["WarningMessage"]);
+                            if (!string.IsNullOrEmpty(confirmMessage))
+                            {
+                                <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                                    @confirmMessage
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                </div>
+                            }
+                            if (!string.IsNullOrEmpty(warningMessage))
+                            {
+                                <div class="alert alert-warning alert-dismissable" id="divSuccessMessage">
+                                    @warningMessage
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                </div>
+                            }
+                        }
+                        @using (Html.BeginForm("complain", "Transaction", new { FormMethod.Post }))
+                        {
+
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Emp Type:</label>
+
+                                            @Html.DropDownListFor(m => m.ComplainDetail.Empid, Model.Getemptype, new { @required = "true", @class = "form-control c" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>ULB:</label>
+                                            @Html.HiddenFor(m => m.ComplainDetail.ComplainId)
+
+                                            @Html.DropDownListFor(m => m.ComplainDetail.UlbID, Model.lstulb, new { @required = "true", @class = "form-control c", @id = "ulb", @onchange = "BindSubComplain()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Name:</label>
+
+                                            @Html.TextBoxFor(m => m.ComplainDetail.Name, new { @class = "form-control c", @required = true, @id = "name" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Email:</label>
+                                            @Html.TextBoxFor(m => m.ComplainDetail.Email, new { @class = "form-control c", @required = true, @id = "email" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Mobile:</label>
+                                            @Html.TextBoxFor(m => m.ComplainDetail.Mobile, new { @class = "form-control c mobile1", @required = true, @id = "mobile", @maxlength = "10", @onkeypress = "chkmob()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Address:</label>
+                                            @Html.TextAreaFor(m => m.ComplainDetail.Address, new { @class = "form-control c", @required = true, @id = "address" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Pin:</label>
+                                            @Html.TextBoxFor(m => m.ComplainDetail.Pin, new { @class = "form-control c", @required = true, @id = "pin", @maxlength = "6", @onkeypress = "checkpin()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Aadhaar No:</label>
+                                            @Html.TextBoxFor(m => m.ComplainDetail.AadharNo, new { @class = "form-control c", @id = "aadhaar" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Complain Detail:</label>
+                                            @Html.TextAreaFor(m => m.ComplainDetail.Complain_Detail, new { @class = "form-control", @required = true })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Complain Type:</label>
+                                            @Html.DropDownListFor(m => m.ComplainDetail.ComplainTypeId, Model.lstcomplaintype, new { @required = "true", @class = "form-control", @id = "ct", @onchange = "BindSubComplain()" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Complain Sub Type:</label>
+                                            @Html.DropDownListFor(m => m.ComplainDetail.ComplainSubTypeId, Model.lstcomplainsubtype, new { @class = "form-control", @id = "cst" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Complain Priority:</label>
+                                            @Html.DropDownListFor(m => m.ComplainDetail.PriorityId, Model.lstpriority, new { @required = "true", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Assign To:</label>
+                                            @Html.DropDownListFor(m => m.ComplainDetail.AssignedTo, Model.lstAssignee, new { @required = "true", @class = "form-control", @id = "assignto" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <button type="submit" id="btnsubmit" class="btn btn-primary mts" onclick="return confirm('Are you sure want to save this detail')">Submit</button>
+                                            <button type="submit" class="btn btn-danger mts">Cancel</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+                        <div class="form-row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Row-->
+    </div>
+    <!-- End container-fluid-->
+
+</div><!--End content-wrapper-->
+<!--Start Back To Top Button-->
+<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<script src="~/assets/js/jquery.min.js"></script>
+<!--End Back To Top Button-->
+<script>
+    $(".allow_numeric").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            //display error message
+            return false;
+        }
+    });
+    function chkmob() {
+        var data = $('.mobile1');
+        data.keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                return false;
+            }
+        });
+    }
+    function checkpin() {
+        var data = $("#pin");
+        data.keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                return false;
+            }
+        });
+    }
+    function ChangeText() {
+        $("#btnsubmit").text("Update");
+    }
+    function Delete(id) {
+        if (confirm("Are you sure want to delete this user"))
+            $.ajax({
+                async: false,
+                url: "/Transaction/DeleteUser",
+                type: "post",
+                dataType: "json",
+                data: { id: id },
+                success: function (app) {
+                    if (app == true) {
+                        location.href = "/Transaction/ManageUser";
+                    }
+                }
+            });
+    }
+    function BindData() {
+        if ($("#SearchMobile").val() != "") {
+            $.ajax({
+                async: false,
+                url: "/Transaction/BindComplainData",
+                type: "post",
+                dataType: "json",
+                data: { id: $("#SearchMobile").val() },
+                success: function (app) {
+                    $("#searchdata").html('');
+                    var data = "";
+                    if (app.length > 0) {
+                        for (var i = 0; i < app.length; i++) {
+                            data += '<tr>';
+                            data += '<td>' + app[i].Name + '</td>';
+                            data += '<td>' + app[i].Mobile + '</td>';
+                            data += '<td>' + app[i].Email + '</td>';
+                            data += '<td>' + app[i].Address + '</td>';
+                            data += '<td>' + app[i].Pin + '</td>';
+                            data += '<td>' + app[i].AadharNo + '</td>';
+                            data += '<td>' + app[i].ULBName + '</td>';
+                            data += '<td><input type="button" class="btn btn-warning btn-sm"onclick="BindSelectedData(' + app[i].ComplainId + ')" value="Bind"/></td>';
+                            data += '</tr>';
+                        }
+                    }
+                    $("#searchdata").html(data);
+                }
+            });
+        }
+        else {
+            alert("Please put mobile no");
+            return false;
+        }
+    }
+    function BindSelectedData(id) {
+        if (confirm("Are you sure want to bind this user detail")) {
+            $.ajax({
+                async: false,
+                url: "/Transaction/BindSelectedData",
+                type: "post",
+                dataType: "json",
+                data: { id: id },
+                success: function (app) {
+                    if (app != null) {
+                        $("#ulb").val(app.UlbID);
+                        $("#name").val(app.Name);
+                        $("#email").val(app.Email);
+                        $("#mobile").val(app.Mobile);
+                        $("#address").val(app.Address);
+                        $("#pin").val(app.Pin);
+                        $("#aadhaar").val(app.AadharNo);
+                    }
+                    else {
+                        $("#name").val('');
+                        $("#email").val('');
+                        $("#mobile").val('');
+                        $("#address").val('');
+                        $("#pin").val('');
+                        $("#aadhaar").val('');
+                    }
+                }
+            });
+        }
+    }
+    function CheckPassword() {
+        if ($("#confpwd").val() != "") {
+            if ($("#pwd").val() != $("#confpwd").val()) {
+                alert("Password and conf password not matched");
+                $("#confpwd").val("");
+            }
+        }
+    }
+    $(".allow_numeric").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            //display error message
+            return false;
+        }
+    });
+    function checkpasswordlength() {
+        debugger;
+        var data = $("#pwd");
+        if (data[0].value.length < 6 || data[0].value.length > 10) {
+            alert("Password length should be within 6 to 10 character");
+            $("#pwd").val("");
+        }
+    }
+    function checkmobile() {
+        var data = $("#mobileno");
+        data.keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                return false;
+            }
+        });
+    }
+    function checkmobilelength1() {
+        debugger;
+        if ($("#mobileno").val().length < 10 || $("#mobileno").val().length > 10) {
+            alert("Mobile no should be 10 digit");
+            $("#mobileno").val("");
+        }
+    }
+    function SelectDistrict() {
+        if ($("#usertype").val() == 5) {
+            $("#dist").prop("disabled", true);
+        }
+        else {
+            $("#dist").prop("disabled", false);
+        }
+    }
+    function CheckUserName() {
+        debugger;
+        var data = $("#uname").val();
+        $.ajax({
+            async: false,
+            url: "/Transaction/CheckUserName",
+            type: "post",
+            dataType: "json",
+            data: { uname: data },
+            success: function (app) {
+                debugger;
+                if (app == true) {
+                    alert("Username already taken by another user");
+                    $("#uname").val("");
+                }
+            }
+        });
+    }
+    function BindSubComplain() {
+        var data = $("#ct").val();
+        var ulb = $("#ulb").val();
+        $.ajax({
+            async: false,
+            url: "/Transaction/BindSubComplain",
+            type: "post",
+            dataType: "json",
+            data: { id: data},
+            success: function (app) {
+                $("#cst").html('');
+                if (app.length > 0) {
+                    var optn = "";
+
+                    for (var i = 0; i < app.length; i++) {
+                        optn += "<option value=" + app[i].Value + ">" + app[i].Text + "</option>";
+                    }
+                    $("#cst").append(optn);
+                }
+                else {
+                    var optn = "<option value='0'>Select</option>";
+
+                    $("#cst").append(optn);
+                }
+            }
+        });
+        $.ajax({
+            async: false,
+            url: "/Transaction/Bindassignto",
+            type: "post",
+            dataType: "json",
+            data: { id: data, ulb: ulb },
+            success: function (app) {
+                $("#assignto").html('');
+                if (app.length > 0) {
+                    var optn = "";
+
+                    for (var i = 0; i < app.length; i++) {
+                        optn += "<option value=" + app[i].Value + ">" + app[i].Text + "</option>";
+                    }
+                    $("#assignto").append(optn);
+                }
+                else {
+                    var optn = "<option value='0'>Select</option>";
+
+                    $("#assignto").append(optn);
+                }
+            }
+        });
+    }
+</script>

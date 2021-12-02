@@ -1,0 +1,50 @@
+﻿.ribbon-box {
+    position: relative;
+}
+
+    .ribbon-box .ribbon-custom {
+        background: #0062f4;
+    }
+
+    .ribbon-box .ribbon {
+        position: relative;
+        float: left;
+        clear: both;
+        padding: 5px 12px 5px 12px;
+        margin-left: -11px;
+        top: 5px;
+        margin-bottom: 2px;
+        font-family: 'Open Sans';
+        -moz-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        -o-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px #525250;
+    }
+
+    .ribbon-box .ribbon-custom:before {
+        border-color: #0062f4 transparent transparent;
+    }
+
+    .ribbon-box .ribbon:before {
+        content: " ";
+        border-style: solid;
+        border-width: 10px;
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        margin-bottom: -10px;
+        z-index: -1;
+    }
+
+
+
+
+
+
+@media (min-width: 768px) {
+}

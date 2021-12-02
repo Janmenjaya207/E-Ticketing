@@ -1,0 +1,882 @@
+﻿@model EmployeeTimesheet.Models.ReportModel
+
+@{
+    ViewBag.Title = "viewallcomplain_authority_dashboard";
+    Layout = "~/Views/Shared/TSLayout.cshtml";
+}
+<link href="~/assets/css/style.css" rel="stylesheet" />
+<h2></h2>
+<style>
+    .tdwidth {
+        width: 50% !important;
+    }
+
+    @@media (max-width:576px) {
+        .mts {
+            margin-top: 0px !important;
+        }
+    }
+
+    .mts {
+        margin-top: 28px;
+    }
+
+    label {
+        color: #212121;
+        font-weight: 600 !important;
+    }
+
+    a {
+        color: #e0ba00;
+    }
+
+    .rules {
+        color: #b56800 !important;
+        font-weight: 700;
+    }
+
+    @@media (min-width:576px) {
+        .modal-dialog1 {
+            max-width: 800px;
+            margin: 1.75rem auto
+        }
+    }
+
+    .modaloverflow {
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    table.dataTable thead > tr > th {
+        color: #fff;
+        background-color: #223035;
+    }
+
+    .table th {
+        padding: 7px !important;
+    }
+
+    .btn1 {
+        padding: 2px 6px;
+    }
+
+
+    .btn-group {
+        box-shadow: none;
+    }
+
+        .btn-group > .btn-group:not(:first-child) > .btn, .btn-group > .btn:not(:first-child) {
+            border-top-left-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+        }
+
+        .btn-group > .btn-group:not(:last-child) > .btn, .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }
+        .bodyradious{
+            border-radius:18px;
+        }
+</style>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row mt-4">
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+                <div class="card bg-dark1 shadow-dark bodyradious">
+                    <div class="card-body" style="background-color:#007bff;">
+                        <div class="media d-flex">
+                            <div class="media-body">
+
+                                <h3 class="text-white">@Model.total</h3>
+                                <span class="text-light">Total TICKET</span>
+                            </div>
+                            <div class="w-icon">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+                <div class="card bg-dark1 shadow-dark bodyradious">
+                    <div class="card-body " style="background-color:#28a745;">
+                        <div class="media d-flex">
+                            <div class="media-body">
+                                <h3 class="text-white">@Model.resolved</h3>
+                                <span class="text-light">Resolved TICKET</span>
+                            </div>
+                            <div class="w-icon">
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+                <div class="card bg-dark1 shadow-dark bodyradious">
+                    <div class="card-body" style="background-color:#6c757d;">
+                        <div class="media d-flex">
+                            <div class="media-body">
+                                <h3 class="text-white">@Model.rejected</h3>
+                                <span class="text-light">Rejected TICKET</span>
+                            </div>
+                            <div class="w-icon">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-3">
+                <div class="card bg-dark1 shadow-dark bodyradious">
+                    <div class="card-body" style="background-color:#ff6a00;">
+                        <div class="media d-flex">
+                            <div class="media-body">
+                                <h3 class="text-white">@Model.assigned</h3>
+                                <span class="text-light">Assigned TICKET</span>
+                            </div>
+                            <div class="w-icon">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-4">
+                <div class="card bg-dark1 shadow-dark bodyradious">
+                    <div class="card-content">
+                        <div class="card-body" style="background-color:#17a2b8;">
+                            <div class="media d-flex">
+                                <div class="media-body">
+                                    <h3 class="text-white">@Model.pending</h3>
+                                    <span class="text-light">Pending TICKET </span>
+                                </div>
+                                <div class="w-icon">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-4">
+                <div class="card bg-dark1 shadow-dark">
+                    <div class="card-content">
+                        <div class="card-body" style="background-color:#6f42c1;">
+                            <div class="media d-flex">
+                                <div class="media-body">
+                                    <h3 class="text-white">@Model.close</h3>
+                                    <span class="text-light">Closed TICKET </span>
+                                </div>
+                                <div class="w-icon">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 col-xl-4">
+                <div class="card bg-dark1 shadow-dark">
+                    <div class="card-content">
+                        <div class="card-body" style="background-color:#e83e8c;">
+                            <div class="media d-flex">
+                                <div class="media-body">
+                                    <h3 class="text-white">@Model.reopen</h3>
+                                    <span class="text-light">Reopened TICKET </span>
+                                </div>
+                                <div class="w-icon">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-6" style="height:200px">
+                <div class="card" style="height:336px;">
+                    <div class="card-header"><i class="fa fa-table"></i> Average time for closing ticket</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                <table id="" class="table table-bordered dataTable" role="grid" aria-describedby="default-datatable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Priority</th>
+                                            <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Avereage Time of Closing</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row" class="even">
+                                            <td>@Model.high</td>
+                                            <td>@Model.highavg Hour</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td>@Model.medium</td>
+                                            <td>@Model.mediumavg Hour</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td>@Model.low</td>
+                                            <td>@Model.lowavg Hour</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i>Analytics for average ticket closing time in hours</div>
+                    <div class="card-body">
+                        <div class="container">
+                            <section class="column">
+                                <div class="column-item">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Analytical Report for @ViewBag.formonth</div>
+                    <div class="card-body">
+                        <div class="container">
+                            <section class="column">
+                                <div class="column-item">
+                                    <!-- Line Chart -->
+                                    <canvas class="charts" id="report"></canvas>
+                                </div>
+
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row pt-4 pb-3">
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Total TICKET List for @ViewBag.formonth</div>
+
+                    @if (Model.vw_REPORT_COMPLAIN_Months == null)
+                    {
+                        <div class="card-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No complain found.</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <table id="default-datatable1" class="table table-bordered dataTable" role="grid" aria-describedby="default-datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 15px;">Sl No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">ULB</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Total<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Assigned<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Resolved<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Rejected<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Reopen<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Closed<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Pending<br /> TICKET</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int count = 0;}
+                                            @if (Model.vw_REPORT_COMPLAIN_Months != null)
+                                            {
+                                                foreach (var item in Model.vw_REPORT_COMPLAIN_Months)
+                                                {
+                                                    count = count + 1;
+                                                    <tr role="row" class="even">
+                                                        <td>
+                                                            @count
+                                                        </td>
+                                                        <td>
+                                                            @item.ULBName
+                                                        </td>
+                                                        <td>
+                                                            @item.mTotal
+                                                        </td>
+                                                        <td>@item.mAssigned</td>
+                                                        <td>@item.mResolved</td>
+                                                        <td>@item.mRejected</td>
+                                                        <td>@item.mReopen</td>
+                                                        <td>@item.mClose</td>
+                                                        <td>@item.mPending</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                        <tr role="row" class="even">
+                                            <td style="font-weight:bold"></td>
+                                            <td style="font-weight:bold">Total</td>
+                                            <td>
+                                                <a href="/Transaction/viewallcomplain_authority" style="font-weight:bold;color:blue;">@Model.mtotal</a>
+                                            </td>
+                                            <td style="font-weight:bold">@Model.massigned</td>
+                                            <td style="font-weight:bold">@Model.mresolved</td>
+                                            <td style="font-weight:bold">@Model.mrejected</td>
+                                            <td style="font-weight:bold">@Model.mreopen</td>
+                                            <td style="font-weight:bold">@Model.mclose</td>
+                                            <td style="font-weight:bold">@Model.mpending</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Total TICKET List</div>
+                    <div class="card-body">
+                        
+                        <div class="wrapper2">
+                            <canvas id="chart2"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End Row-->
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Total TICKET List</div>
+
+                    @if (Model.vw_REPORT_COMPLAINs == null)
+                    {
+                        <div class="card-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No complain found.</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <table id="default-datatable" class="table table-bordered dataTable" role="grid" aria-describedby="default-datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 15px;">Sl No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">ULB</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Total<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Assigned<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Resolved<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Rejected<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Reopen<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Closed<br /> TICKET</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Pending<br /> TICKET</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int count = 0;}
+                                            @if (Model.vw_REPORT_COMPLAINs != null)
+                                            {
+                                                foreach (var item in Model.vw_REPORT_COMPLAINs)
+                                                {
+                                                    count = count + 1;
+                                                    <tr role="row" class="even">
+                                                        <td>
+                                                            @count
+                                                        </td>
+                                                        <td>
+                                                            @item.ULBName
+                                                        </td>
+                                                        <td>
+                                                            @item.Total
+                                                        </td>
+                                                        <td>@item.Assigned</td>
+                                                        <td>@item.Resolved</td>
+                                                        <td>@item.Rejected</td>
+                                                        <td>@item.Reopen</td>
+                                                        <td>@item.Close</td>
+                                                        <td>@item.Pending</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                        <tr role="row" class="even">
+                                            <td style="font-weight:bold"></td>
+                                            <td style="font-weight:bold">Total</td>
+                                            <td>
+                                                <a href="/Transaction/viewallcomplain_authority" style="font-weight:bold;color:blue;">@Model.total</a>
+                                            </td>
+                                            <td style="font-weight:bold">@Model.assigned</td>
+                                            <td style="font-weight:bold">@Model.resolved</td>
+                                            <td style="font-weight:bold">@Model.rejected</td>
+                                            <td style="font-weight:bold">@Model.reopen</td>
+                                            <td style="font-weight:bold">@Model.close</td>
+                                            <td style="font-weight:bold">@Model.pending</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- End container-fluid-->
+
+</div>
+<div class="modal fade" id="fullwarningmodal">
+    <div class="modal-dialog modal-dialog1">
+        <div class="modal-content bg-default border-warning modaloverflow">
+            <div class="modal-header">
+                <h5 class="modal-title text-black"><i class="fa fa-star"></i>View TICKET Detail</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-black">
+                <div class="table-responsive" id="compdiv">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+@*<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js'></script>*@
+<script src="~/assets/js/chart1.js"></script>
+<script src="~/assets/js/chart2.js"></script>
+<script src="~/assets/js/chart3.js"></script>
+@*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>*@
+
+
+<script>
+    $(document).ready(function () {
+
+        createChart('myChart', myChartData);
+        createChart('chart2', myChartData2);
+
+        $('.wrapper').hide();
+
+
+        $('#test').click(function (e) {
+            e.preventDefault();
+            $('.wrapper').toggle();
+            $('.wrapper2').toggle();
+        });
+    });
+
+    const myChartData = {
+        type: 'doughnut',
+        data: {
+            labels: ["High", "Medium", "Low"],
+            datasets: [{
+                label: "Test",
+                data: [@Model.highavg, @Model.mediumavg, @Model.lowavg],
+                backgroundColor: [
+                    'rgba(255, 153, 102, 1)',
+                    'rgba(198, 201, 202, 1)',
+                    'rgba(128, 116, 110, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 153, 102, 1)',
+                    'rgba(198, 201, 202, 1)',
+                    'rgba(128, 116, 110, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+
+            title: {
+                display: true,
+                text: "Average time for ticket closing chart"
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+
+            legend: {
+                position: 'right',
+                labels: {
+                    boxWidth: 10,
+                    padding: 12
+                }
+            },
+        }
+    };
+
+    const myChartData2 = {
+        type: 'doughnut',
+        data: {
+            labels: ["ASSIGENED TICKET", "RESOLVED TICKET", "REJECTED TICKET", "REOPEN TICKET", "CLOSE TICKET", "PENDING TICKET"],
+            datasets: [{
+                label: "Test2",
+                data: [@Model.assigned, @Model.resolved, @Model.rejected, @Model.reopen, @Model.close, @Model.pending],
+                backgroundColor: [
+                    'rgba(255, 153, 102, 1)',
+                    'rgba(198, 201, 202, 1)',
+                    'rgba(128, 116, 110, 1)',
+                    'rgba(42, 210, 201, 1)',
+                    'rgba(97, 71, 103, 1)',
+                    'rgba(95, 122, 118, 1)'
+                ],
+                borderColor: [
+                    'rgba(255, 153, 102, 1)',
+                    'rgba(198, 201, 202, 1)',
+                    'rgba(128, 116, 110, 1)',
+                    'rgba(42, 210, 201, 1)',
+                    'rgba(97, 71, 103, 1)',
+                    'rgba(95, 122, 118, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+
+            title: {
+                display: true,
+                text: "TOTAL TICKET - (@Model.total)"
+
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+
+            legend: {
+                position: 'right',
+                labels: {
+                    boxWidth: 10,
+                    padding: 12
+                }
+            },
+        }
+    };
+
+    function createChart(chartId, chartData) {
+        const ctx = document.getElementById(chartId);
+        const myChart = new Chart(ctx, {
+            type: chartData.type,
+            data: chartData.data,
+            options: chartData.options,
+        });
+    };
+</script>
+
+<script>
+    // Line Chart Configuration
+    // Report Chart Data
+    const reportData = {
+        labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ],
+        datasets: [
+            {
+                label: "Monthly TICKET Details",
+                data: [@Model.sp_REPORT_COMPLAIN_Year_Result.m1Total, @Model.sp_REPORT_COMPLAIN_Year_Result.m2Total
+                    , @Model.sp_REPORT_COMPLAIN_Year_Result.m3Total, @Model.sp_REPORT_COMPLAIN_Year_Result.m4Total,
+                    @Model.sp_REPORT_COMPLAIN_Year_Result.m5Total, @Model.sp_REPORT_COMPLAIN_Year_Result.m6Total,
+                    @Model.sp_REPORT_COMPLAIN_Year_Result.m7Total, @Model.sp_REPORT_COMPLAIN_Year_Result.m8Total,
+                    @Model.sp_REPORT_COMPLAIN_Year_Result.m9Total, @Model.sp_REPORT_COMPLAIN_Year_Result.m10Total,
+                    @Model.sp_REPORT_COMPLAIN_Year_Result.m11Total, @Model.sp_REPORT_COMPLAIN_Year_Result.m12Total],
+                tension: 0.3,
+                fill: true,
+                borderWidth: 2,
+                borderColor: "rgba(48, 156, 229, 1)",
+                backgroundColor: "rgba(48, 156, 229, 0.8)",
+                pointBorderColor: "rgba(48, 156, 229, 1)",
+                pointBackgroundColor: "rgba(48, 156, 229, 1)"
+            }
+        ]
+    };
+
+    // Report Chart Plugin
+    const reportPlugin = {
+        title: {
+            display: true,
+            position: "top",
+            align: "start",
+            text: "Monthly Complian Details Report",
+            color: "rgba(23, 23, 23, 1)",
+            font: {
+                family: "Roboto",
+                size: 21,
+                style: "normal",
+                weight: "bold",
+                lineHeight: 1
+            },
+            padding: {
+                bottom: 20
+            }
+        },
+        legend: {
+            display: true,
+            position: "top",
+            align: "center",
+            maxWidth: 20,
+            labels: {
+                font: {
+                    family: "Roboto",
+                    size: 13,
+                    style: "normal",
+                    weight: "normal",
+                    lineHeight: 1,
+                    textAlign: "center",
+                    usePointStyle: false
+                }
+            }
+        },
+        tooltip: {
+            enabled: true,
+            mode: "index",
+            intersect: false,
+            position: "nearest",
+            usePointStyle: false,
+            titleFont: "Roboto",
+            titleAlign: "left",
+            titleSpacing: 3,
+            padding: 10
+        }
+    };
+
+    // Report Chart Option
+    const reportOption = {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: 2.5,
+        plugins: reportPlugin,
+        scales: {
+            x: {
+                display: true,
+                grid: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: "Month",
+                    color: "rgba(23, 23, 23, 1)",
+                    font: {
+                        family: "Roboto",
+                        size: 16,
+                        weight: "bold",
+                        lineHeight: 1
+                    },
+                    padding: {
+                        top: 20
+                    }
+                }
+            },
+            y: {
+                display: true,
+                beginAtZero: true,
+                grid: {
+                    display: true
+                },
+                title: {
+                    display: false,
+                    text: "Value",
+                    color: "rgba(23, 23, 23, 1)",
+                    font: {
+                        family: "Roboto",
+                        size: 16,
+                        weight: "bold",
+                        lineHeight: 1
+                    }
+                }
+            }
+        },
+        interaction: {
+            mode: "index",
+            intersect: false
+        },
+        animation: {
+            x: {
+                duration: 3000,
+                from: 0
+            },
+            y: {
+                duration: 1500,
+                from: 500
+            }
+        }
+    };
+
+    // Report Chart Config
+    let reportChart = document.getElementById("report");
+    const lineChart = new Chart(reportChart, {
+        type: "line",
+        data: reportData,
+        options: reportOption
+    });
+
+    //--------------------------------------------------------------------------
+    // Doughnut Chart Configuration
+    // Analytic Chart Data
+    const analyticData = {
+        labels: ["Sales", "Distribute", "Return"],
+        datasets: [
+            {
+                data: [10000, 8000, 5000],
+                hoverOffset: 6,
+                backgroundColor: [
+                    "rgba(255, 70, 38, 0.85)",
+                    "rgba(61, 198, 79, 0.85)",
+                    "rgba(155, 39, 176, 0.85)"
+                ]
+            }
+        ]
+    };
+
+    // Analytic Chart Plugin
+    const analyticPlugin = {
+        title: {
+            display: true,
+            position: "top",
+            align: "start",
+            text: "Analytics Data Report",
+            color: "rgba(23, 23, 23, 1)",
+            font: {
+                family: "Roboto",
+                size: 21,
+                style: "normal",
+                weight: "bold",
+                lineHeight: 1
+            },
+            padding: {
+                bottom: 20
+            }
+        },
+        legend: {
+            display: true,
+            position: "bottom",
+            align: "start",
+            labels: {
+                font: {
+                    family: "Roboto",
+                    size: 13,
+                    style: "normal",
+                    weight: "normal",
+                    lineHeight: 1,
+                    textAlign: "center",
+                    usePointStyle: false
+                }
+            }
+        },
+        tooltip: {
+            enabled: true,
+            mode: "index",
+            intersect: false,
+            position: "average",
+            usePointStyle: false,
+            titleFont: "Roboto",
+            titleAlign: "left",
+            titleSpacing: 3,
+            padding: 10
+        }
+    };
+
+    // Analytic Chart Option
+    const analyticOption = {
+        responsive: false,
+        maintainAspectRatio: true,
+        plugins: analyticPlugin
+    };
+
+    // Analytic Chart Config
+    let analyticChart = document.getElementById("analytic");
+    const doughnutChart = new Chart(analyticChart, {
+        type: "doughnut",
+        data: analyticData,
+        options: analyticOption
+    });
+</script>
+<script type="text/javascript">
+    $("body").on("click", "#btnExport", function () {
+        html2canvas($('#Report')[0], {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                var data = $("#EmployeeName").val();
+
+                pdfMake.createPdf(docDefinition).download(data + ".pdf");
+            }
+        });
+    });
+</script>
+
+

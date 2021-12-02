@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1525
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeTimesheet", "EmployeeTimesheet\EmployeeTimesheet.csproj", "{BAA87850-576F-4BC3-A420-358EB4D7606E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAA87850-576F-4BC3-A420-358EB4D7606E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA87850-576F-4BC3-A420-358EB4D7606E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA87850-576F-4BC3-A420-358EB4D7606E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA87850-576F-4BC3-A420-358EB4D7606E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6A707B3-26BF-4FEA-A649-6B4E15C19B6B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,1832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TimeSheetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientCode" Type="varchar(max)" />
+          <Property Name="ClientName" Type="varchar(max)" />
+          <Property Name="ContactPerson" Type="varchar(max)" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ComplainDetail">
+          <Key>
+            <PropertyRef Name="ComplainId" />
+          </Key>
+          <Property Name="ComplainId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empid" Type="int" />
+          <Property Name="ComplainTypeId" Type="int" />
+          <Property Name="ComplainSubTypeId" Type="int" />
+          <Property Name="UlbID" Type="int" />
+          <Property Name="RegId" Type="int" />
+          <Property Name="ComplainNo" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="10" />
+          <Property Name="AadharNo" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Pin" Type="varchar" MaxLength="10" />
+          <Property Name="Complain_Detail" Type="varchar(max)" />
+          <Property Name="PriorityId" Type="int" />
+          <Property Name="ReceivedBy" Type="int" />
+          <Property Name="ReceiveDate" Type="datetime" />
+          <Property Name="AssignedTo" Type="int" />
+          <Property Name="AssignedDate" Type="datetime" />
+          <Property Name="ComplainStatus" Type="int" />
+          <Property Name="ExecRemark" Type="varchar(max)" />
+          <Property Name="ActionDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="UserRemark" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ComplainLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="appid" Type="int" />
+          <Property Name="Regid" Type="int" />
+          <Property Name="usertypeid" Type="int" />
+          <Property Name="remark" Type="varchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="actiondate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ComplainType">
+          <Key>
+            <PropertyRef Name="ComplainTypeId" />
+          </Key>
+          <Property Name="ComplainTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplainName" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Emp_Type">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeDeatils">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar(max)" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar(max)" />
+          <Property Name="Designation" Type="varchar(max)" />
+          <Property Name="PF" Type="varchar(max)" />
+          <Property Name="UAN" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCode" Type="varchar(max)" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="ProjectName" Type="varchar(max)" />
+          <Property Name="Descriotion" Type="varchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProjectModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Module" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="Ulb_Id" Type="int" />
+          <Property Name="FirstName" Type="varchar(max)" />
+          <Property Name="LastName" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="ComplainTypeId" Type="int" />
+          <Property Name="Contactno" Type="varchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalarySlipInfo">
+          <Key>
+            <PropertyRef Name="Slipid" />
+          </Key>
+          <Property Name="Slipid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Region" Type="varchar" MaxLength="50" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccountNO" Type="int" />
+          <Property Name="UAN" Type="varchar" MaxLength="50" />
+          <Property Name="PayableDays" Type="int" />
+          <Property Name="Company" Type="varchar" MaxLength="50" />
+          <Property Name="Designation" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfJoin" Type="datetime" />
+          <Property Name="PFNO" Type="varchar" MaxLength="50" />
+          <Property Name="EsicNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BasicPay" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HouserentAllow" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ConveyanceAllow" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MedicalAllow" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SpecialAllownce" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PerformancePay" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GrossEarning" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OtherEarning" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalGrossEarning" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProvidentFund" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProfessionalTax" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TDS" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ESI" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TrustDeduction" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OtherDeduction" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LeaveDeduction" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GrossDeduction" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NetPay" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SickLeave" Type="int" />
+          <Property Name="CasualLeave" Type="int" />
+          <Property Name="AnnualLeave" Type="int" />
+          <Property Name="LeaveTaken" Type="int" />
+          <Property Name="AllowedLeave" Type="int" />
+          <Property Name="LopDays" Type="int" />
+          <Property Name="LeaveBalance" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Modifyon" Type="datetime" />
+          <Property Name="ModifyBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StatusMaster">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubCompainType">
+          <Key>
+            <PropertyRef Name="CompainsubtypeId" />
+          </Key>
+          <Property Name="CompainsubtypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplainTypeId" Type="int" />
+          <Property Name="SubtypeName" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="ModOn" Type="datetime" />
+          <Property Name="ModBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TaskDetail">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssigneeId" Type="int" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="TransactionCode" Type="varchar(max)" />
+          <Property Name="TransactionName" Type="varchar(max)" />
+          <Property Name="TranCreationDate" Type="datetime" />
+          <Property Name="AssignedTaskDetail" Type="varchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsApprived" Type="bit" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="50" />
+          <Property Name="TemplateContent" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TimeSheetDtl">
+          <Key>
+            <PropertyRef Name="TimesheetId" />
+          </Key>
+          <Property Name="TimesheetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="TransactionCode" Type="varchar(max)" />
+          <Property Name="TransactionName" Type="varchar(max)" />
+          <Property Name="TransactionDesc" Type="varchar(max)" />
+          <Property Name="TranCreationDate" Type="datetime" />
+          <Property Name="TranPostDate" Type="datetime" />
+          <Property Name="PendingReason" Type="varchar(max)" />
+          <Property Name="TaskDetail" Type="varchar(max)" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="TLId" Type="int" />
+          <Property Name="TLRemark" Type="varchar(max)" />
+          <Property Name="PMId" Type="int" />
+          <Property Name="PMRemark" Type="varchar(max)" />
+          <Property Name="IsApprived" Type="bit" />
+        </EntityType>
+        <EntityType Name="ULB">
+          <Key>
+            <PropertyRef Name="UlbID" />
+          </Key>
+          <Property Name="UlbID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ULBName" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TimeSheet.dbo.vw_complain_avg_time' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_complain_avg_time">
+          <Property Name="PriorityId" Type="int" />
+          <Property Name="avgtime" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_complain_avg_time_calculator' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_complain_avg_time_calculator">
+          <Key>
+            <PropertyRef Name="PriorityHigh" />
+            <PropertyRef Name="PriorityMedium" />
+            <PropertyRef Name="PriorityLow" />
+          </Key>
+          <Property Name="PriorityHigh" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="avgtime_high" Type="int" />
+          <Property Name="PriorityMedium" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="avgtime_med" Type="int" />
+          <Property Name="PriorityLow" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="avgtime_low" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_Complain_Dtl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Complain_Dtl">
+          <Key>
+            <PropertyRef Name="ComplainId" />
+            <PropertyRef Name="ComplainSubTypeId" />
+            <PropertyRef Name="SubtypeName" />
+            <PropertyRef Name="UserRemark" />
+          </Key>
+          <Property Name="ComplainId" Type="int" Nullable="false" />
+          <Property Name="ComplainTypeId" Type="int" />
+          <Property Name="ComplainName" Type="varchar" MaxLength="50" />
+          <Property Name="ComplainNo" Type="varchar" MaxLength="50" />
+          <Property Name="RegId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="AadharNo" Type="varchar" MaxLength="50" />
+          <Property Name="Complain_Detail" Type="varchar(max)" />
+          <Property Name="PriorityId" Type="int" />
+          <Property Name="Pin" Type="varchar" MaxLength="10" />
+          <Property Name="ComPriority" Type="varchar" MaxLength="6" />
+          <Property Name="ReceivedBy" Type="int" />
+          <Property Name="rcvname" Type="varchar(max)" />
+          <Property Name="ReceiveDate" Type="datetime" />
+          <Property Name="Receive_Date" Type="nvarchar" MaxLength="4000" />
+          <Property Name="AssignedTo" Type="int" />
+          <Property Name="AssignedDate" Type="datetime" />
+          <Property Name="Assigned_Date" Type="nvarchar" MaxLength="4000" />
+          <Property Name="assnname" Type="varchar(max)" />
+          <Property Name="ComplainStatus" Type="int" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" />
+          <Property Name="ExecRemark" Type="varchar(max)" />
+          <Property Name="ActionDate" Type="datetime" />
+          <Property Name="Action_Date" Type="nvarchar" MaxLength="4000" />
+          <Property Name="UlbID" Type="int" />
+          <Property Name="ULBName" Type="varchar" MaxLength="50" />
+          <Property Name="ComplainSubTypeId" Type="int" Nullable="false" />
+          <Property Name="SubtypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRemark" Type="varchar(max)" Nullable="false" />
+          <Property Name="Empid" Type="int" />
+          <Property Name="EmpType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_Complain_Sub_Type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Complain_Sub_Type">
+          <Key>
+            <PropertyRef Name="CompainsubtypeId" />
+          </Key>
+          <Property Name="ComplainName" Type="varchar" MaxLength="50" />
+          <Property Name="SubtypeName" Type="varchar" MaxLength="50" />
+          <Property Name="CompainsubtypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_Project_Details' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Project_Details">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar(max)" />
+          <Property Name="ClientName" Type="varchar(max)" />
+          <Property Name="ProjectCode" Type="varchar(max)" />
+          <Property Name="Descriotion" Type="varchar(max)" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_REPORT_COMPLAIN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_REPORT_COMPLAIN">
+          <Key>
+            <PropertyRef Name="UlbID" />
+          </Key>
+          <Property Name="UlbID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ULBName" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="int" />
+          <Property Name="Assigned" Type="int" />
+          <Property Name="Resolved" Type="int" />
+          <Property Name="Rejected" Type="int" />
+          <Property Name="Reopen" Type="int" />
+          <Property Name="Close" Type="int" />
+          <Property Name="Pending" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_REPORT_COMPLAIN_Month' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_REPORT_COMPLAIN_Month">
+          <Key>
+            <PropertyRef Name="UlbID" />
+          </Key>
+          <Property Name="UlbID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ULBName" Type="varchar" MaxLength="50" />
+          <Property Name="mTotal" Type="int" />
+          <Property Name="mAssigned" Type="int" />
+          <Property Name="mResolved" Type="int" />
+          <Property Name="mRejected" Type="int" />
+          <Property Name="mReopen" Type="int" />
+          <Property Name="mClose" Type="int" />
+          <Property Name="mPending" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_Task_Dtl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Task_Dtl">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="varchar(max)" />
+          <Property Name="Module" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionCode" Type="varchar(max)" />
+          <Property Name="TransactionName" Type="varchar(max)" />
+          <Property Name="AssignedTaskDetail" Type="varchar(max)" />
+          <Property Name="TranCreationDate" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="UserName" Type="varchar(max)" />
+          <Property Name="assignid" Type="int" />
+          <Property Name="Assugn_name" Type="varchar(max)" />
+          <Property Name="IsApprived" Type="bit" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="trncreatedate" Type="datetime" />
+          <Property Name="ProjectId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_Timesheet_Dtl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Timesheet_Dtl">
+          <Key>
+            <PropertyRef Name="TimesheetId" />
+            <PropertyRef Name="PendingReason" />
+            <PropertyRef Name="Comments" />
+          </Key>
+          <Property Name="TimesheetId" Type="int" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="100" />
+          <Property Name="ProjectName" Type="varchar(max)" />
+          <Property Name="Module" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionCode" Type="varchar(max)" />
+          <Property Name="TransactionName" Type="varchar(max)" />
+          <Property Name="TransactionDesc" Type="varchar(max)" />
+          <Property Name="TranCreationDate" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TranPostDate" Type="nvarchar" MaxLength="4000" />
+          <Property Name="PendingReason" Type="varchar(max)" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="TLName" Type="varchar(max)" />
+          <Property Name="tlid" Type="int" />
+          <Property Name="TLRemark" Type="varchar(max)" />
+          <Property Name="PMName" Type="varchar(max)" />
+          <Property Name="pmid" Type="int" />
+          <Property Name="PMRemark" Type="varchar(max)" />
+          <Property Name="IsApprived" Type="bit" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="trncreatedate" Type="datetime" />
+          <Property Name="trnpostdate" Type="datetime" />
+          <Property Name="TaskDetail" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TimeSheet.dbo.vw_user_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_user_detail">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Contactno" Type="varchar" MaxLength="10" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="100" />
+          <Property Name="UserTypeName" Type="varchar" MaxLength="50" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="ComplainTypeId" Type="int" />
+          <Property Name="ComplainName" Type="varchar" MaxLength="50" />
+          <Property Name="UlbID" Type="int" />
+          <Property Name="ULBName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="sp_Log_Detail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="compid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_REPORT_COMPLAIN_Year" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TimeSheetModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplainDetail" EntityType="Self.ComplainDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplainLog" EntityType="Self.ComplainLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplainType" EntityType="Self.ComplainType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emp_Type" EntityType="Self.Emp_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeDeatils" EntityType="Self.EmployeeDeatils" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectModule" EntityType="Self.ProjectModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalarySlipInfo" EntityType="Self.SalarySlipInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusMaster" EntityType="Self.StatusMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCompainType" EntityType="Self.SubCompainType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskDetail" EntityType="Self.TaskDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TimeSheetDtl" EntityType="Self.TimeSheetDtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ULB" EntityType="Self.ULB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_complain_avg_time_calculator" EntityType="Self.vw_complain_avg_time_calculator" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_complain_avg_time_calculator].[PriorityHigh] AS [PriorityHigh], 
+    [vw_complain_avg_time_calculator].[avgtime_high] AS [avgtime_high], 
+    [vw_complain_avg_time_calculator].[PriorityMedium] AS [PriorityMedium], 
+    [vw_complain_avg_time_calculator].[avgtime_med] AS [avgtime_med], 
+    [vw_complain_avg_time_calculator].[PriorityLow] AS [PriorityLow], 
+    [vw_complain_avg_time_calculator].[avgtime_low] AS [avgtime_low]
+    FROM [dbo].[vw_complain_avg_time_calculator] AS [vw_complain_avg_time_calculator]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Complain_Dtl" EntityType="Self.vw_Complain_Dtl" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Complain_Dtl].[ComplainId] AS [ComplainId], 
+    [vw_Complain_Dtl].[ComplainTypeId] AS [ComplainTypeId], 
+    [vw_Complain_Dtl].[ComplainName] AS [ComplainName], 
+    [vw_Complain_Dtl].[ComplainNo] AS [ComplainNo], 
+    [vw_Complain_Dtl].[RegId] AS [RegId], 
+    [vw_Complain_Dtl].[Name] AS [Name], 
+    [vw_Complain_Dtl].[Mobile] AS [Mobile], 
+    [vw_Complain_Dtl].[Email] AS [Email], 
+    [vw_Complain_Dtl].[Address] AS [Address], 
+    [vw_Complain_Dtl].[AadharNo] AS [AadharNo], 
+    [vw_Complain_Dtl].[Complain_Detail] AS [Complain_Detail], 
+    [vw_Complain_Dtl].[PriorityId] AS [PriorityId], 
+    [vw_Complain_Dtl].[Pin] AS [Pin], 
+    [vw_Complain_Dtl].[ComPriority] AS [ComPriority], 
+    [vw_Complain_Dtl].[ReceivedBy] AS [ReceivedBy], 
+    [vw_Complain_Dtl].[rcvname] AS [rcvname], 
+    [vw_Complain_Dtl].[ReceiveDate] AS [ReceiveDate], 
+    [vw_Complain_Dtl].[Receive_Date] AS [Receive_Date], 
+    [vw_Complain_Dtl].[AssignedTo] AS [AssignedTo], 
+    [vw_Complain_Dtl].[AssignedDate] AS [AssignedDate], 
+    [vw_Complain_Dtl].[Assigned_Date] AS [Assigned_Date], 
+    [vw_Complain_Dtl].[assnname] AS [assnname], 
+    [vw_Complain_Dtl].[ComplainStatus] AS [ComplainStatus], 
+    [vw_Complain_Dtl].[StatusName] AS [StatusName], 
+    [vw_Complain_Dtl].[ExecRemark] AS [ExecRemark], 
+    [vw_Complain_Dtl].[ActionDate] AS [ActionDate], 
+    [vw_Complain_Dtl].[Action_Date] AS [Action_Date], 
+    [vw_Complain_Dtl].[UlbID] AS [UlbID], 
+    [vw_Complain_Dtl].[ULBName] AS [ULBName], 
+    [vw_Complain_Dtl].[ComplainSubTypeId] AS [ComplainSubTypeId], 
+    [vw_Complain_Dtl].[SubtypeName] AS [SubtypeName], 
+    [vw_Complain_Dtl].[UserRemark] AS [UserRemark], 
+    [vw_Complain_Dtl].[Empid] AS [Empid], 
+    [vw_Complain_Dtl].[EmpType] AS [EmpType]
+    FROM [dbo].[vw_Complain_Dtl] AS [vw_Complain_Dtl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Complain_Sub_Type" EntityType="Self.vw_Complain_Sub_Type" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Complain_Sub_Type].[ComplainName] AS [ComplainName], 
+    [vw_Complain_Sub_Type].[SubtypeName] AS [SubtypeName], 
+    [vw_Complain_Sub_Type].[CompainsubtypeId] AS [CompainsubtypeId]
+    FROM [dbo].[vw_Complain_Sub_Type] AS [vw_Complain_Sub_Type]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Project_Details" EntityType="Self.vw_Project_Details" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Project_Details].[ProjectId] AS [ProjectId], 
+    [vw_Project_Details].[ProjectName] AS [ProjectName], 
+    [vw_Project_Details].[ClientName] AS [ClientName], 
+    [vw_Project_Details].[ProjectCode] AS [ProjectCode], 
+    [vw_Project_Details].[Descriotion] AS [Descriotion], 
+    [vw_Project_Details].[ClientId] AS [ClientId]
+    FROM [dbo].[vw_Project_Details] AS [vw_Project_Details]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_REPORT_COMPLAIN" EntityType="Self.vw_REPORT_COMPLAIN" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_REPORT_COMPLAIN].[UlbID] AS [UlbID], 
+    [vw_REPORT_COMPLAIN].[ULBName] AS [ULBName], 
+    [vw_REPORT_COMPLAIN].[Total] AS [Total], 
+    [vw_REPORT_COMPLAIN].[Assigned] AS [Assigned], 
+    [vw_REPORT_COMPLAIN].[Resolved] AS [Resolved], 
+    [vw_REPORT_COMPLAIN].[Rejected] AS [Rejected], 
+    [vw_REPORT_COMPLAIN].[Reopen] AS [Reopen], 
+    [vw_REPORT_COMPLAIN].[Close] AS [Close], 
+    [vw_REPORT_COMPLAIN].[Pending] AS [Pending]
+    FROM [dbo].[vw_REPORT_COMPLAIN] AS [vw_REPORT_COMPLAIN]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_REPORT_COMPLAIN_Month" EntityType="Self.vw_REPORT_COMPLAIN_Month" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_REPORT_COMPLAIN_Month].[UlbID] AS [UlbID], 
+    [vw_REPORT_COMPLAIN_Month].[ULBName] AS [ULBName], 
+    [vw_REPORT_COMPLAIN_Month].[mTotal] AS [mTotal], 
+    [vw_REPORT_COMPLAIN_Month].[mAssigned] AS [mAssigned], 
+    [vw_REPORT_COMPLAIN_Month].[mResolved] AS [mResolved], 
+    [vw_REPORT_COMPLAIN_Month].[mRejected] AS [mRejected], 
+    [vw_REPORT_COMPLAIN_Month].[mReopen] AS [mReopen], 
+    [vw_REPORT_COMPLAIN_Month].[mClose] AS [mClose], 
+    [vw_REPORT_COMPLAIN_Month].[mPending] AS [mPending]
+    FROM [dbo].[vw_REPORT_COMPLAIN_Month] AS [vw_REPORT_COMPLAIN_Month]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Task_Dtl" EntityType="Self.vw_Task_Dtl" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Task_Dtl].[TaskId] AS [TaskId], 
+    [vw_Task_Dtl].[DistrictName] AS [DistrictName], 
+    [vw_Task_Dtl].[ProjectName] AS [ProjectName], 
+    [vw_Task_Dtl].[Module] AS [Module], 
+    [vw_Task_Dtl].[TransactionCode] AS [TransactionCode], 
+    [vw_Task_Dtl].[TransactionName] AS [TransactionName], 
+    [vw_Task_Dtl].[AssignedTaskDetail] AS [AssignedTaskDetail], 
+    [vw_Task_Dtl].[TranCreationDate] AS [TranCreationDate], 
+    [vw_Task_Dtl].[RegistrationId] AS [RegistrationId], 
+    [vw_Task_Dtl].[UserName] AS [UserName], 
+    [vw_Task_Dtl].[assignid] AS [assignid], 
+    [vw_Task_Dtl].[Assugn_name] AS [Assugn_name], 
+    [vw_Task_Dtl].[IsApprived] AS [IsApprived], 
+    [vw_Task_Dtl].[DistrictId] AS [DistrictId], 
+    [vw_Task_Dtl].[Name] AS [Name], 
+    [vw_Task_Dtl].[trncreatedate] AS [trncreatedate], 
+    [vw_Task_Dtl].[ProjectId] AS [ProjectId], 
+    [vw_Task_Dtl].[ModuleId] AS [ModuleId]
+    FROM [dbo].[vw_Task_Dtl] AS [vw_Task_Dtl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Timesheet_Dtl" EntityType="Self.vw_Timesheet_Dtl" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Timesheet_Dtl].[TimesheetId] AS [TimesheetId], 
+    [vw_Timesheet_Dtl].[DistrictName] AS [DistrictName], 
+    [vw_Timesheet_Dtl].[ProjectName] AS [ProjectName], 
+    [vw_Timesheet_Dtl].[Module] AS [Module], 
+    [vw_Timesheet_Dtl].[TransactionCode] AS [TransactionCode], 
+    [vw_Timesheet_Dtl].[TransactionName] AS [TransactionName], 
+    [vw_Timesheet_Dtl].[TransactionDesc] AS [TransactionDesc], 
+    [vw_Timesheet_Dtl].[TranCreationDate] AS [TranCreationDate], 
+    [vw_Timesheet_Dtl].[TranPostDate] AS [TranPostDate], 
+    [vw_Timesheet_Dtl].[PendingReason] AS [PendingReason], 
+    [vw_Timesheet_Dtl].[Comments] AS [Comments], 
+    [vw_Timesheet_Dtl].[RegistrationId] AS [RegistrationId], 
+    [vw_Timesheet_Dtl].[TLName] AS [TLName], 
+    [vw_Timesheet_Dtl].[tlid] AS [tlid], 
+    [vw_Timesheet_Dtl].[TLRemark] AS [TLRemark], 
+    [vw_Timesheet_Dtl].[PMName] AS [PMName], 
+    [vw_Timesheet_Dtl].[pmid] AS [pmid], 
+    [vw_Timesheet_Dtl].[PMRemark] AS [PMRemark], 
+    [vw_Timesheet_Dtl].[IsApprived] AS [IsApprived], 
+    [vw_Timesheet_Dtl].[DistrictId] AS [DistrictId], 
+    [vw_Timesheet_Dtl].[Name] AS [Name], 
+    [vw_Timesheet_Dtl].[trncreatedate] AS [trncreatedate], 
+    [vw_Timesheet_Dtl].[trnpostdate] AS [trnpostdate], 
+    [vw_Timesheet_Dtl].[TaskDetail] AS [TaskDetail]
+    FROM [dbo].[vw_Timesheet_Dtl] AS [vw_Timesheet_Dtl]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_user_detail" EntityType="Self.vw_user_detail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_user_detail].[RegistrationId] AS [RegistrationId], 
+    [vw_user_detail].[Name] AS [Name], 
+    [vw_user_detail].[Username] AS [Username], 
+    [vw_user_detail].[Email] AS [Email], 
+    [vw_user_detail].[Contactno] AS [Contactno], 
+    [vw_user_detail].[DistrictName] AS [DistrictName], 
+    [vw_user_detail].[UserTypeName] AS [UserTypeName], 
+    [vw_user_detail].[DistrictId] AS [DistrictId], 
+    [vw_user_detail].[UserTypeId] AS [UserTypeId], 
+    [vw_user_detail].[ComplainTypeId] AS [ComplainTypeId], 
+    [vw_user_detail].[ComplainName] AS [ComplainName], 
+    [vw_user_detail].[UlbID] AS [UlbID], 
+    [vw_user_detail].[ULBName] AS [ULBName]
+    FROM [dbo].[vw_user_detail] AS [vw_user_detail]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TimeSheetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TimeSheetEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_Log_Detail" ReturnType="Collection(TimeSheetModel.sp_Log_Detail_Result)">
+          <Parameter Name="compid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_REPORT_COMPLAIN_Year" ReturnType="Collection(TimeSheetModel.sp_REPORT_COMPLAIN_Year_Result)">
+          <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Clients" EntityType="TimeSheetModel.Client" />
+          <EntitySet Name="ComplainDetails" EntityType="TimeSheetModel.ComplainDetail" />
+          <EntitySet Name="ComplainLogs" EntityType="TimeSheetModel.ComplainLog" />
+          <EntitySet Name="ComplainTypes" EntityType="TimeSheetModel.ComplainType" />
+          <EntitySet Name="Districts" EntityType="TimeSheetModel.District" />
+          <EntitySet Name="Emp_Type" EntityType="TimeSheetModel.Emp_Type" />
+          <EntitySet Name="EmployeeDeatils" EntityType="TimeSheetModel.EmployeeDeatil" />
+          <EntitySet Name="Projects" EntityType="TimeSheetModel.Project" />
+          <EntitySet Name="ProjectModules" EntityType="TimeSheetModel.ProjectModule" />
+          <EntitySet Name="Registrations" EntityType="TimeSheetModel.Registration" />
+          <EntitySet Name="SalarySlipInfoes" EntityType="TimeSheetModel.SalarySlipInfo" />
+          <EntitySet Name="StatusMasters" EntityType="TimeSheetModel.StatusMaster" />
+          <EntitySet Name="SubCompainTypes" EntityType="TimeSheetModel.SubCompainType" />
+          <EntitySet Name="TaskDetails" EntityType="TimeSheetModel.TaskDetail" />
+          <EntitySet Name="Templates" EntityType="TimeSheetModel.Template" />
+          <EntitySet Name="TimeSheetDtls" EntityType="TimeSheetModel.TimeSheetDtl" />
+          <EntitySet Name="ULBs" EntityType="TimeSheetModel.ULB" />
+          <EntitySet Name="Users" EntityType="TimeSheetModel.User" />
+          <EntitySet Name="UserTypes" EntityType="TimeSheetModel.UserType" />
+          <EntitySet Name="vw_Complain_Dtl" EntityType="TimeSheetModel.vw_Complain_Dtl" />
+          <EntitySet Name="vw_Complain_Sub_Type" EntityType="TimeSheetModel.vw_Complain_Sub_Type" />
+          <EntitySet Name="vw_Project_Details" EntityType="TimeSheetModel.vw_Project_Details" />
+          <EntitySet Name="vw_REPORT_COMPLAIN" EntityType="TimeSheetModel.vw_REPORT_COMPLAIN" />
+          <EntitySet Name="vw_REPORT_COMPLAIN_Month" EntityType="TimeSheetModel.vw_REPORT_COMPLAIN_Month" />
+          <EntitySet Name="vw_Task_Dtl" EntityType="TimeSheetModel.vw_Task_Dtl" />
+          <EntitySet Name="vw_Timesheet_Dtl" EntityType="TimeSheetModel.vw_Timesheet_Dtl" />
+          <EntitySet Name="vw_user_detail" EntityType="TimeSheetModel.vw_user_detail" />
+          <EntitySet Name="vw_complain_avg_time_calculator" EntityType="TimeSheetModel.vw_complain_avg_time_calculator" />
+        </EntityContainer>
+        <ComplexType Name="sp_Log_Detail_Result">
+          <Property Type="Int32" Name="appid" Nullable="true" />
+          <Property Type="String" Name="ReceiveDate" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="ComplainNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="actiondate" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="UserTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="remark" Nullable="true" />
+          <Property Type="String" Name="StatusName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_REPORT_COMPLAIN_Year_Result">
+          <Property Type="Int32" Name="m1Total" Nullable="true" />
+          <Property Type="Int32" Name="m2Total" Nullable="true" />
+          <Property Type="Int32" Name="m3Total" Nullable="true" />
+          <Property Type="Int32" Name="m4Total" Nullable="true" />
+          <Property Type="Int32" Name="m5Total" Nullable="true" />
+          <Property Type="Int32" Name="m6Total" Nullable="true" />
+          <Property Type="Int32" Name="m7Total" Nullable="true" />
+          <Property Type="Int32" Name="m8Total" Nullable="true" />
+          <Property Type="Int32" Name="m9Total" Nullable="true" />
+          <Property Type="Int32" Name="m10Total" Nullable="true" />
+          <Property Type="Int32" Name="m11Total" Nullable="true" />
+          <Property Type="Int32" Name="m12Total" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClientName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ComplainDetail">
+          <Key>
+            <PropertyRef Name="ComplainId" />
+          </Key>
+          <Property Name="ComplainId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empid" Type="Int32" />
+          <Property Name="ComplainTypeId" Type="Int32" />
+          <Property Name="ComplainSubTypeId" Type="Int32" />
+          <Property Name="UlbID" Type="Int32" />
+          <Property Name="RegId" Type="Int32" />
+          <Property Name="ComplainNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Pin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Complain_Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityId" Type="Int32" />
+          <Property Name="ReceivedBy" Type="Int32" />
+          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+          <Property Name="AssignedTo" Type="Int32" />
+          <Property Name="AssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="ComplainStatus" Type="Int32" />
+          <Property Name="ExecRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActionDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="UserRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ComplainLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="appid" Type="Int32" />
+          <Property Name="Regid" Type="Int32" />
+          <Property Name="usertypeid" Type="Int32" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="actiondate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ComplainType">
+          <Key>
+            <PropertyRef Name="ComplainTypeId" />
+          </Key>
+          <Property Name="ComplainTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Emp_Type">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmployeeDeatil">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UAN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descriotion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProjectModule">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Ulb_Id" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComplainTypeId" Type="Int32" />
+          <Property Name="Contactno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SalarySlipInfo">
+          <Key>
+            <PropertyRef Name="Slipid" />
+          </Key>
+          <Property Name="Slipid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNO" Type="Int32" />
+          <Property Name="UAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayableDays" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfJoin" Type="DateTime" Precision="3" />
+          <Property Name="PFNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EsicNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BasicPay" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HouserentAllow" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ConveyanceAllow" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MedicalAllow" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SpecialAllownce" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PerformancePay" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrossEarning" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OtherEarning" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalGrossEarning" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProvidentFund" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProfessionalTax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TDS" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ESI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TrustDeduction" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OtherDeduction" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LeaveDeduction" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrossDeduction" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetPay" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SickLeave" Type="Int32" />
+          <Property Name="CasualLeave" Type="Int32" />
+          <Property Name="AnnualLeave" Type="Int32" />
+          <Property Name="LeaveTaken" Type="Int32" />
+          <Property Name="AllowedLeave" Type="Int32" />
+          <Property Name="LopDays" Type="Int32" />
+          <Property Name="LeaveBalance" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifyon" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StatusMaster">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubCompainType">
+          <Key>
+            <PropertyRef Name="CompainsubtypeId" />
+          </Key>
+          <Property Name="CompainsubtypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplainTypeId" Type="Int32" />
+          <Property Name="SubtypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="ModOn" Type="DateTime" Precision="3" />
+          <Property Name="ModBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TaskDetail">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssigneeId" Type="Int32" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="TransactionCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TranCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="AssignedTaskDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="IsApprived" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TimeSheetDtl">
+          <Key>
+            <PropertyRef Name="TimesheetId" />
+          </Key>
+          <Property Name="TimesheetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="TransactionCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TranCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="TranPostDate" Type="DateTime" Precision="3" />
+          <Property Name="PendingReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TaskDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="TLId" Type="Int32" />
+          <Property Name="TLRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PMId" Type="Int32" />
+          <Property Name="PMRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsApprived" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ULB">
+          <Key>
+            <PropertyRef Name="UlbID" />
+          </Key>
+          <Property Name="UlbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ULBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Complain_Dtl">
+          <Key>
+            <PropertyRef Name="ComplainId" />
+            <PropertyRef Name="ComplainSubTypeId" />
+            <PropertyRef Name="SubtypeName" />
+            <PropertyRef Name="UserRemark" />
+          </Key>
+          <Property Name="ComplainId" Type="Int32" Nullable="false" />
+          <Property Name="ComplainTypeId" Type="Int32" />
+          <Property Name="ComplainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComplainNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Complain_Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PriorityId" Type="Int32" />
+          <Property Name="Pin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ComPriority" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="ReceivedBy" Type="Int32" />
+          <Property Name="rcvname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiveDate" Type="DateTime" Precision="3" />
+          <Property Name="Receive_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="AssignedTo" Type="Int32" />
+          <Property Name="AssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="Assigned_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="assnname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComplainStatus" Type="Int32" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExecRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActionDate" Type="DateTime" Precision="3" />
+          <Property Name="Action_Date" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="UlbID" Type="Int32" />
+          <Property Name="ULBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComplainSubTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SubtypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRemark" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empid" Type="Int32" />
+          <Property Name="EmpType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Complain_Sub_Type">
+          <Key>
+            <PropertyRef Name="CompainsubtypeId" />
+          </Key>
+          <Property Name="ComplainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubtypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompainsubtypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_Project_Details">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClientName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descriotion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_REPORT_COMPLAIN">
+          <Key>
+            <PropertyRef Name="UlbID" />
+          </Key>
+          <Property Name="UlbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ULBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="Assigned" Type="Int32" />
+          <Property Name="Resolved" Type="Int32" />
+          <Property Name="Rejected" Type="Int32" />
+          <Property Name="Reopen" Type="Int32" />
+          <Property Name="Close" Type="Int32" />
+          <Property Name="Pending" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_REPORT_COMPLAIN_Month">
+          <Key>
+            <PropertyRef Name="UlbID" />
+          </Key>
+          <Property Name="UlbID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ULBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mTotal" Type="Int32" />
+          <Property Name="mAssigned" Type="Int32" />
+          <Property Name="mResolved" Type="Int32" />
+          <Property Name="mRejected" Type="Int32" />
+          <Property Name="mReopen" Type="Int32" />
+          <Property Name="mClose" Type="Int32" />
+          <Property Name="mPending" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_Task_Dtl">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTaskDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TranCreationDate" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="assignid" Type="Int32" />
+          <Property Name="Assugn_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsApprived" Type="Boolean" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="trncreatedate" Type="DateTime" Precision="3" />
+          <Property Name="ProjectId" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_Timesheet_Dtl">
+          <Key>
+            <PropertyRef Name="TimesheetId" />
+            <PropertyRef Name="PendingReason" />
+            <PropertyRef Name="Comments" />
+          </Key>
+          <Property Name="TimesheetId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TranCreationDate" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TranPostDate" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PendingReason" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="TLName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tlid" Type="Int32" />
+          <Property Name="TLRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PMName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pmid" Type="Int32" />
+          <Property Name="PMRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsApprived" Type="Boolean" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="trncreatedate" Type="DateTime" Precision="3" />
+          <Property Name="trnpostdate" Type="DateTime" Precision="3" />
+          <Property Name="TaskDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_user_detail">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contactno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="ComplainTypeId" Type="Int32" />
+          <Property Name="ComplainName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UlbID" Type="Int32" />
+          <Property Name="ULBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_complain_avg_time_calculator">
+          <Key>
+            <PropertyRef Name="PriorityHigh" />
+            <PropertyRef Name="PriorityMedium" />
+            <PropertyRef Name="PriorityLow" />
+          </Key>
+          <Property Name="PriorityHigh" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="avgtime_high" Type="Int32" />
+          <Property Name="PriorityMedium" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="avgtime_med" Type="Int32" />
+          <Property Name="PriorityLow" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="avgtime_low" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TimeSheetModelStoreContainer" CdmEntityContainer="TimeSheetEntities">
+          <FunctionImportMapping FunctionImportName="sp_Log_Detail" FunctionName="TimeSheetModel.Store.sp_Log_Detail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TimeSheetModel.sp_Log_Detail_Result">
+                <ScalarProperty Name="appid" ColumnName="appid" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ComplainNo" ColumnName="ComplainNo" />
+                <ScalarProperty Name="actiondate" ColumnName="actiondate" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_REPORT_COMPLAIN_Year" FunctionName="TimeSheetModel.Store.sp_REPORT_COMPLAIN_Year">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TimeSheetModel.sp_REPORT_COMPLAIN_Year_Result">
+                <ScalarProperty Name="m1Total" ColumnName="m1Total" />
+                <ScalarProperty Name="m2Total" ColumnName="m2Total" />
+                <ScalarProperty Name="m3Total" ColumnName="m3Total" />
+                <ScalarProperty Name="m4Total" ColumnName="m4Total" />
+                <ScalarProperty Name="m5Total" ColumnName="m5Total" />
+                <ScalarProperty Name="m6Total" ColumnName="m6Total" />
+                <ScalarProperty Name="m7Total" ColumnName="m7Total" />
+                <ScalarProperty Name="m8Total" ColumnName="m8Total" />
+                <ScalarProperty Name="m9Total" ColumnName="m9Total" />
+                <ScalarProperty Name="m10Total" ColumnName="m10Total" />
+                <ScalarProperty Name="m11Total" ColumnName="m11Total" />
+                <ScalarProperty Name="m12Total" ColumnName="m12Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="TimeSheetModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplainDetails">
+            <EntityTypeMapping TypeName="TimeSheetModel.ComplainDetail">
+              <MappingFragment StoreEntitySet="ComplainDetail">
+                <ScalarProperty Name="UserRemark" ColumnName="UserRemark" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="ExecRemark" ColumnName="ExecRemark" />
+                <ScalarProperty Name="ComplainStatus" ColumnName="ComplainStatus" />
+                <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+                <ScalarProperty Name="Complain_Detail" ColumnName="Complain_Detail" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ComplainNo" ColumnName="ComplainNo" />
+                <ScalarProperty Name="RegId" ColumnName="RegId" />
+                <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+                <ScalarProperty Name="ComplainSubTypeId" ColumnName="ComplainSubTypeId" />
+                <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="ComplainId" ColumnName="ComplainId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplainLogs">
+            <EntityTypeMapping TypeName="TimeSheetModel.ComplainLog">
+              <MappingFragment StoreEntitySet="ComplainLog">
+                <ScalarProperty Name="actiondate" ColumnName="actiondate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="usertypeid" ColumnName="usertypeid" />
+                <ScalarProperty Name="Regid" ColumnName="Regid" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplainTypes">
+            <EntityTypeMapping TypeName="TimeSheetModel.ComplainType">
+              <MappingFragment StoreEntitySet="ComplainType">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+                <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="TimeSheetModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emp_Type">
+            <EntityTypeMapping TypeName="TimeSheetModel.Emp_Type">
+              <MappingFragment StoreEntitySet="Emp_Type">
+                <ScalarProperty Name="EmpType" ColumnName="EmpType" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDeatils">
+            <EntityTypeMapping TypeName="TimeSheetModel.EmployeeDeatil">
+              <MappingFragment StoreEntitySet="EmployeeDeatils">
+                <ScalarProperty Name="UAN" ColumnName="UAN" />
+                <ScalarProperty Name="PF" ColumnName="PF" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="TimeSheetModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Descriotion" ColumnName="Descriotion" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectModules">
+            <EntityTypeMapping TypeName="TimeSheetModel.ProjectModule">
+              <MappingFragment StoreEntitySet="ProjectModule">
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="TimeSheetModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+                <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Ulb_Id" ColumnName="Ulb_Id" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalarySlipInfoes">
+            <EntityTypeMapping TypeName="TimeSheetModel.SalarySlipInfo">
+              <MappingFragment StoreEntitySet="SalarySlipInfo">
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="Modifyon" ColumnName="Modifyon" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LeaveBalance" ColumnName="LeaveBalance" />
+                <ScalarProperty Name="LopDays" ColumnName="LopDays" />
+                <ScalarProperty Name="AllowedLeave" ColumnName="AllowedLeave" />
+                <ScalarProperty Name="LeaveTaken" ColumnName="LeaveTaken" />
+                <ScalarProperty Name="AnnualLeave" ColumnName="AnnualLeave" />
+                <ScalarProperty Name="CasualLeave" ColumnName="CasualLeave" />
+                <ScalarProperty Name="SickLeave" ColumnName="SickLeave" />
+                <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+                <ScalarProperty Name="GrossDeduction" ColumnName="GrossDeduction" />
+                <ScalarProperty Name="LeaveDeduction" ColumnName="LeaveDeduction" />
+                <ScalarProperty Name="OtherDeduction" ColumnName="OtherDeduction" />
+                <ScalarProperty Name="TrustDeduction" ColumnName="TrustDeduction" />
+                <ScalarProperty Name="ESI" ColumnName="ESI" />
+                <ScalarProperty Name="TDS" ColumnName="TDS" />
+                <ScalarProperty Name="ProfessionalTax" ColumnName="ProfessionalTax" />
+                <ScalarProperty Name="ProvidentFund" ColumnName="ProvidentFund" />
+                <ScalarProperty Name="TotalGrossEarning" ColumnName="TotalGrossEarning" />
+                <ScalarProperty Name="OtherEarning" ColumnName="OtherEarning" />
+                <ScalarProperty Name="GrossEarning" ColumnName="GrossEarning" />
+                <ScalarProperty Name="PerformancePay" ColumnName="PerformancePay" />
+                <ScalarProperty Name="SpecialAllownce" ColumnName="SpecialAllownce" />
+                <ScalarProperty Name="MedicalAllow" ColumnName="MedicalAllow" />
+                <ScalarProperty Name="ConveyanceAllow" ColumnName="ConveyanceAllow" />
+                <ScalarProperty Name="HouserentAllow" ColumnName="HouserentAllow" />
+                <ScalarProperty Name="BasicPay" ColumnName="BasicPay" />
+                <ScalarProperty Name="EsicNumber" ColumnName="EsicNumber" />
+                <ScalarProperty Name="PFNO" ColumnName="PFNO" />
+                <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="PayableDays" ColumnName="PayableDays" />
+                <ScalarProperty Name="UAN" ColumnName="UAN" />
+                <ScalarProperty Name="BankAccountNO" ColumnName="BankAccountNO" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="Slipid" ColumnName="Slipid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusMasters">
+            <EntityTypeMapping TypeName="TimeSheetModel.StatusMaster">
+              <MappingFragment StoreEntitySet="StatusMaster">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCompainTypes">
+            <EntityTypeMapping TypeName="TimeSheetModel.SubCompainType">
+              <MappingFragment StoreEntitySet="SubCompainType">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+                <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+                <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+                <ScalarProperty Name="CompainsubtypeId" ColumnName="CompainsubtypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskDetails">
+            <EntityTypeMapping TypeName="TimeSheetModel.TaskDetail">
+              <MappingFragment StoreEntitySet="TaskDetail">
+                <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="AssignedTaskDetail" ColumnName="AssignedTaskDetail" />
+                <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+                <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="AssigneeId" ColumnName="AssigneeId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="TimeSheetModel.Template">
+              <MappingFragment StoreEntitySet="Template">
+                <ScalarProperty Name="TemplateContent" ColumnName="TemplateContent" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TimeSheetDtls">
+            <EntityTypeMapping TypeName="TimeSheetModel.TimeSheetDtl">
+              <MappingFragment StoreEntitySet="TimeSheetDtl">
+                <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+                <ScalarProperty Name="PMRemark" ColumnName="PMRemark" />
+                <ScalarProperty Name="PMId" ColumnName="PMId" />
+                <ScalarProperty Name="TLRemark" ColumnName="TLRemark" />
+                <ScalarProperty Name="TLId" ColumnName="TLId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="TaskDetail" ColumnName="TaskDetail" />
+                <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
+                <ScalarProperty Name="TranPostDate" ColumnName="TranPostDate" />
+                <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+                <ScalarProperty Name="TransactionDesc" ColumnName="TransactionDesc" />
+                <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="TimesheetId" ColumnName="TimesheetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ULBs">
+            <EntityTypeMapping TypeName="TimeSheetModel.ULB">
+              <MappingFragment StoreEntitySet="ULB">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+                <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TimeSheetModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="TimeSheetModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Complain_Dtl">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_Complain_Dtl">
+              <MappingFragment StoreEntitySet="vw_Complain_Dtl">
+                <ScalarProperty Name="EmpType" ColumnName="EmpType" />
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="UserRemark" ColumnName="UserRemark" />
+                <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+                <ScalarProperty Name="ComplainSubTypeId" ColumnName="ComplainSubTypeId" />
+                <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+                <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+                <ScalarProperty Name="Action_Date" ColumnName="Action_Date" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="ExecRemark" ColumnName="ExecRemark" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="ComplainStatus" ColumnName="ComplainStatus" />
+                <ScalarProperty Name="assnname" ColumnName="assnname" />
+                <ScalarProperty Name="Assigned_Date" ColumnName="Assigned_Date" />
+                <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Receive_Date" ColumnName="Receive_Date" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="rcvname" ColumnName="rcvname" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="ComPriority" ColumnName="ComPriority" />
+                <ScalarProperty Name="Pin" ColumnName="Pin" />
+                <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+                <ScalarProperty Name="Complain_Detail" ColumnName="Complain_Detail" />
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegId" ColumnName="RegId" />
+                <ScalarProperty Name="ComplainNo" ColumnName="ComplainNo" />
+                <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+                <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+                <ScalarProperty Name="ComplainId" ColumnName="ComplainId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Complain_Sub_Type">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_Complain_Sub_Type">
+              <MappingFragment StoreEntitySet="vw_Complain_Sub_Type">
+                <ScalarProperty Name="CompainsubtypeId" ColumnName="CompainsubtypeId" />
+                <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+                <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Project_Details">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_Project_Details">
+              <MappingFragment StoreEntitySet="vw_Project_Details">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Descriotion" ColumnName="Descriotion" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_REPORT_COMPLAIN">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_REPORT_COMPLAIN">
+              <MappingFragment StoreEntitySet="vw_REPORT_COMPLAIN">
+                <ScalarProperty Name="Pending" ColumnName="Pending" />
+                <ScalarProperty Name="Close" ColumnName="Close" />
+                <ScalarProperty Name="Reopen" ColumnName="Reopen" />
+                <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+                <ScalarProperty Name="Resolved" ColumnName="Resolved" />
+                <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+                <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_REPORT_COMPLAIN_Month">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_REPORT_COMPLAIN_Month">
+              <MappingFragment StoreEntitySet="vw_REPORT_COMPLAIN_Month">
+                <ScalarProperty Name="mPending" ColumnName="mPending" />
+                <ScalarProperty Name="mClose" ColumnName="mClose" />
+                <ScalarProperty Name="mReopen" ColumnName="mReopen" />
+                <ScalarProperty Name="mRejected" ColumnName="mRejected" />
+                <ScalarProperty Name="mResolved" ColumnName="mResolved" />
+                <ScalarProperty Name="mAssigned" ColumnName="mAssigned" />
+                <ScalarProperty Name="mTotal" ColumnName="mTotal" />
+                <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+                <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Task_Dtl">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_Task_Dtl">
+              <MappingFragment StoreEntitySet="vw_Task_Dtl">
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="trncreatedate" ColumnName="trncreatedate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+                <ScalarProperty Name="Assugn_name" ColumnName="Assugn_name" />
+                <ScalarProperty Name="assignid" ColumnName="assignid" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+                <ScalarProperty Name="AssignedTaskDetail" ColumnName="AssignedTaskDetail" />
+                <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Timesheet_Dtl">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_Timesheet_Dtl">
+              <MappingFragment StoreEntitySet="vw_Timesheet_Dtl">
+                <ScalarProperty Name="TaskDetail" ColumnName="TaskDetail" />
+                <ScalarProperty Name="trnpostdate" ColumnName="trnpostdate" />
+                <ScalarProperty Name="trncreatedate" ColumnName="trncreatedate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+                <ScalarProperty Name="PMRemark" ColumnName="PMRemark" />
+                <ScalarProperty Name="pmid" ColumnName="pmid" />
+                <ScalarProperty Name="PMName" ColumnName="PMName" />
+                <ScalarProperty Name="TLRemark" ColumnName="TLRemark" />
+                <ScalarProperty Name="tlid" ColumnName="tlid" />
+                <ScalarProperty Name="TLName" ColumnName="TLName" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
+                <ScalarProperty Name="TranPostDate" ColumnName="TranPostDate" />
+                <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+                <ScalarProperty Name="TransactionDesc" ColumnName="TransactionDesc" />
+                <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="TimesheetId" ColumnName="TimesheetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_user_detail">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_user_detail">
+              <MappingFragment StoreEntitySet="vw_user_detail">
+                <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+                <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+                <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+                <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_complain_avg_time_calculator">
+            <EntityTypeMapping TypeName="TimeSheetModel.vw_complain_avg_time_calculator">
+              <MappingFragment StoreEntitySet="vw_complain_avg_time_calculator">
+                <ScalarProperty Name="avgtime_low" ColumnName="avgtime_low" />
+                <ScalarProperty Name="PriorityLow" ColumnName="PriorityLow" />
+                <ScalarProperty Name="avgtime_med" ColumnName="avgtime_med" />
+                <ScalarProperty Name="PriorityMedium" ColumnName="PriorityMedium" />
+                <ScalarProperty Name="avgtime_high" ColumnName="avgtime_high" />
+                <ScalarProperty Name="PriorityHigh" ColumnName="PriorityHigh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

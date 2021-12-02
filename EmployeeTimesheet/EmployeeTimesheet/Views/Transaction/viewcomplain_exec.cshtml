@@ -1,0 +1,311 @@
+﻿@model EmployeeTimesheet.Models.ComplainModel
+
+@{
+    ViewBag.Title = "viewcomplain_exec";
+    Layout = "~/Views/Shared/TSLayout.cshtml";
+}
+
+<h2></h2>
+<style>
+    .tdwidth {
+        width: 50% !important;
+    }
+
+    @@media (max-width:576px) {
+        .mts {
+            margin-top: 0px !important;
+        }
+    }
+
+    .mts {
+        margin-top: 28px;
+    }
+
+    label {
+        color: #212121;
+        font-weight: 600 !important;
+    }
+
+    a {
+        color: #e0ba00;
+    }
+
+    .rules {
+        color: #b56800 !important;
+        font-weight: 700;
+    }
+
+    @@media (min-width:576px) {
+        .modal-dialog1 {
+            max-width: 800px;
+            margin: 1.75rem auto
+        }
+    }
+
+    .modaloverflow {
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    table.dataTable thead > tr > th {
+        color: #fff;
+        background-color: #223035;
+    }
+
+    .table th {
+        padding: 7px !important;
+    }
+
+    .btn1 {
+        padding: 2px 6px;
+    }
+
+
+    .btn-group {
+        box-shadow: none;
+    }
+
+        .btn-group > .btn-group:not(:first-child) > .btn, .btn-group > .btn:not(:first-child) {
+            border-top-left-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+        }
+
+        .btn-group > .btn-group:not(:last-child) > .btn, .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }
+</style>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Search Ticket List</div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("viewcomplain_exec", "Transaction", new { FormMethod.Post }))
+                        {
+                            <div class="form-row">                               
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Complain Priority:</label>
+                                        @Html.DropDownListFor(m => m.ComplainDetail.PriorityId, Model.lstpriority, new { @required = "true", @class = "form-control" })
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <button type="submit" id="btnsubmit" class="btn btn-primary mts">Search</button>
+                                        <a href="/Transaction/viewcomplain_exec"><button type="button" id="btnsubmit" class="btn btn-warning mts">Show All</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Ticket List</div>
+
+                    @if (Model.vw_Complain_Dtls == null)
+                    {
+                        <div class="card-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No Ticket found.</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <table id="default-datatable" class="table table-bordered dataTable" role="grid" aria-describedby="default-datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 15px;">Sl No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Ticket No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Ticket Type</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Priority</th>
+
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Status</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 30px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int count = 0;}
+                                            @if (Model.vw_Complain_Dtls != null)
+                                            {
+                                            foreach (var item in Model.vw_Complain_Dtls)
+                                            {
+                                                count = count + 1;
+                                            <tr role="row" class="even">
+                                                <td>
+                                                    @count
+                                                </td>
+                                                <td>
+                                                    @item.ComplainNo
+                                                </td>
+                                                <td>@item.Name</td>
+                                                <td>@item.ComplainName</td>
+                                                <td>@item.ComPriority</td>
+                                                <td>@item.StatusName</td>
+
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-outline-warning waves-effect waves-light m-1 btn1" data-toggle="modal" data-target="#fullwarningmodal" onclick="ViewApplication(@item.ComplainId)" title="View Detail"> <i class="fa fa-eye"></i> </button>
+                                                        @if (item.ComplainStatus == 2 || item.ComplainStatus == 5 || item.ComplainStatus == 7)
+                                                        {
+                                                            <button type="button" class="btn btn-outline-warning waves-effect waves-light m-1 btn1" data-toggle="modal" data-target="#fullwarningmodal1" onclick="OpenDialog(@item.ComplainId)" title="Action"> <i class="fa fa-pencil"></i> </button>
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            }
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div><!-- End Row-->
+    </div>
+    <!-- End container-fluid-->
+
+</div>
+<div class="modal fade" id="fullwarningmodal">
+    <div class="modal-dialog modal-dialog1">
+        <div class="modal-content bg-default border-warning modaloverflow">
+            <div class="modal-header">
+                <h5 class="modal-title text-black"><i class="fa fa-star"></i>View Ticket Detail</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-black">
+                <div class="table-responsive" id="compdiv">
+                    
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="fullwarningmodal1">
+    <div class="modal-dialog modal-dialog1">
+        <div class="modal-content bg-default border-warning modaloverflow">
+            <div class="modal-header">
+                <h5 class="modal-title text-black"><i class="fa fa-star"></i>Action</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-black">
+                <div class="table-responsive" id="compdiv">
+                    <table id="default-datatable" class="table table-bordered">
+
+                        <tbody id="applicationdtl">
+                            
+                            <tr>
+                                <td><label>Remark:</label></td>
+                                <td><input type="hidden" id="Compid"/><textarea id="remark" style="height:150px;width:100%;" required></textarea></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="Resolve()">Resolve</button>
+                <button type="button" class="btn btn-danger" onclick="Reject()">Reject</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function OpenDialog(id) {
+        $("#Compid").val(id);
+    }
+    function ViewApplication(id) {
+        $.ajax({
+            async: false,
+            url: "/Transaction/ViewComplain",
+            type: "post",
+            dataType: "html",
+            data: { id: id },
+            success: function (app) {
+                $("#compdiv").html('');
+                $("#compdiv").html(app);
+            }
+        });
+    }
+    function Resolve() {
+        debugger;
+        var id = $("#Compid").val();
+        if ($("#remark").val() == "") {
+            alert("Please put your remark");
+            return false;
+        }
+        else {
+            var remark= $("#remark").val();
+            if (confirm("Are you sure want to submit your remark"))
+                
+            $.ajax({
+                async: false,
+                url: "/Transaction/ResolveComplain",
+                type: "post",
+                dataType: "json",
+                data: { id: id, remark: remark },
+                success: function (app) {
+                    if (app == true) {
+                        alert("Ticket resolved successfully");
+                        location.href = "/Transaction/viewcomplain_exec";
+                    }
+                }
+            });
+        }
+    }
+    function Reject() {
+        debugger;
+        var id = $("#Compid").val();
+        if ($("#remark").val() == "") {
+            alert("Please put your remark");
+            return false;
+        }
+        else {
+            var remark=$("#remark").val();
+
+            if (confirm("Are you sure want to submit your remark"))
+            $.ajax({
+                async: false,
+                url: "/Transaction/RejectComplain",
+                type: "post",
+                dataType: "json",
+                data: { id: id, remark: remark },
+                success: function (app) {
+                    if (app == true) {
+                        alert("Ticket rejected successfully");
+                        location.href = "/Transaction/viewcomplain_exec";
+                    }
+                }
+            });
+        }
+    }
+</script>

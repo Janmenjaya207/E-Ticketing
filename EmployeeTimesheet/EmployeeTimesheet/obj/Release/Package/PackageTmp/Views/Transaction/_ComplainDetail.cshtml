@@ -1,0 +1,88 @@
+﻿@model EmployeeTimesheet.Models.vw_Complain_Dtl
+
+<table id="default-datatable" class="table table-bordered">
+
+    <tbody id="applicationdtl">
+        <tr>
+            <td><label>Ticket No:</label></td>
+            <td><label id="p1">@Model.ComplainNo</label></td>
+        </tr>
+        <tr>
+            <td><label>Ticket Detail:</label></td>
+            <td><label id="p2">@Model.Complain_Detail</label></td>
+        </tr>
+        <tr>
+            <td><label>Emp Type:</label></td>
+            <td><label id="p1">@Model.EmpType</label></td>
+        </tr>
+        <tr>
+            <td><label>Name:</label></td>
+            <td><label id="p2">@Model.Name</label></td>
+        </tr>
+        <tr>
+            <td><label>Email:</label></td>
+            <td><label id="p2">@Model.Email</label></td>
+        </tr>
+        <tr>
+            <td><label>Mobile:</label></td>
+            <td><label id="p2">@Model.Mobile</label></td>
+        </tr>
+        <tr>
+            <td><label>ULB:</label></td>
+            <td><label id="p2">@Model.ULBName</label></td>
+        </tr>
+        <tr>
+            <td><label>Address:</label></td>
+            <td><label id="p2">@Model.Address</label></td>
+        </tr>
+        <tr>
+            <td><label>PIN:</label></td>
+            <td><label id="p2">@Model.Pin</label></td>
+        </tr>
+        <tr>
+            <td> <label>Ticket Type:</label></td>
+            <td> <label id="p3">@Model.ComplainName</label></td>
+        </tr>
+        <tr>
+            <td> <label>Ticket Sub Type:</label></td>
+            <td> <label id="p3">@Model.SubtypeName</label></td>
+        </tr>
+        <tr>
+            <td> <label>Priority:</label></td>
+            <td> <label id="p4">@Model.ComPriority</label></td>
+        </tr>
+        <tr>
+            <td>  <label>Received By:</label></td>
+            <td>  <label id="p5">@Model.rcvname</label></td>
+        </tr>
+        <tr>
+            <td>  <label>Received Date:</label></td>
+            <td>  <label id="p6">@Model.Receive_Date</label></td>
+        </tr>
+        <tr>
+            <td> <label>Assigned To:</label></td>
+            <td> <label id="p7">@Model.assnname</label></td>
+        </tr>
+        <tr>
+            <td><label>Assign Date:</label></td>
+            <td><label id="p8">@Model.Assigned_Date</label></td>
+        </tr>
+        <tr>
+            <td> <label>Executive Remark:</label></td>
+            <td> <label id="p9">@Model.ExecRemark</label></td>
+        </tr>
+        <tr>
+            <td> <label>Action Date:</label></td>
+            <td> <label id="p15">@Model.Action_Date</label></td>
+        </tr>
+        <tr>
+            <td> <label>Status:</label></td>
+            <td> <label id="p15">@Model.StatusName</label></td>
+        </tr>
+        <tr>
+            <td> <label>User Remark:</label></td>
+            <td> <label id="p15">@Model.UserRemark</label></td>
+        </tr>
+
+    </tbody>
+</table>

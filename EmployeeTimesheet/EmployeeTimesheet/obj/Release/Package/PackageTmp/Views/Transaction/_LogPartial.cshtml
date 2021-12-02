@@ -1,0 +1,33 @@
+﻿@model EmployeeTimesheet.Models.LogModel
+
+<table id="default-datatable" class="table table-bordered">
+    <thead>
+        <tr style="background-color:#223035;color:#fff;">
+            <td style="font-weight:bold">Comp No</td>
+            <td style="font-weight:bold">Receive Date</td>
+            <td style="font-weight:bold">User</td>
+            <td style="font-weight:bold">User Type</td>
+            <td style="font-weight:bold">Action Date</td>
+            <td style="font-weight:bold">Status</td>
+            <td style="font-weight:bold">Remark</td>
+        </tr>
+    </thead>
+    <tbody id="applicationdtl">
+        @if (Model.sp_Log_Detail_Results != null)
+        {
+            foreach (var item in Model.sp_Log_Detail_Results)
+            {
+                <tr>
+                    <td>@item.ComplainNo</td>
+                    <td>@item.ReceiveDate</td>
+                    <td>@item.Name</td>
+                    <td>@item.UserTypeName</td>
+                    <td>@item.actiondate</td>
+                    <td>@item.StatusName</td>
+                    <td>@item.remark</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

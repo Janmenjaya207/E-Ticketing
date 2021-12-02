@@ -1,0 +1,168 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>eTicketing</title>
+    <!--favicon-->
+    <link rel="icon" href="~/assets/images/ticketfav.png" type="image/x-icon">
+    <!-- Bootstrap core CSS-->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- animate CSS-->
+    <link href="~/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Custom Style-->
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+    <link href="~/assets/css/ribbon.css" rel="stylesheet" />
+    <style>
+        .card1 {
+            background-color: #ffffff;
+        }
+        .resize{
+            font-weight:700;
+            font-size:14px;
+        }
+        .mrgin{
+            margin-left:0;
+            margin-right:0;
+        }
+        .wd{
+            width:35%;
+        }
+        @@media (max-width: 767px) {
+            .resize {
+                font-weight: 700;
+                font-size: 9px;
+            }
+            .mt{
+                margin-top:5px;
+            }
+}
+    </style>
+
+</head>
+<body style="background-image: url(../assets/images/slider-tickets.jpg); background-size: cover;background-position: center;
+    background-repeat: no-repeat;background-attachment: fixed;">
+    <!-- Start wrapper-->
+    @*<div>
+        <marquee style="color:#fff;font-size:20px;">The Site will be inaccessible on 19th May 2021 from 3PM to 4PM for maintenance and updation work.</marquee>
+    </div>*@
+    <div id="wrapper" class="container">
+        <div class="card card1  card-authentication1  mx-auto" style="margin-top: 215px;">
+            @*<div class="ribbon ribbon-custom">Login</div>*@
+
+            <div class="card-body">
+                <div class="card-content p-2" id="login">
+                    <div class="text-center pb-4">
+                <img src="~/assets/images/sujogb.png" class="img-fluid"/>
+            </div>
+                    <form action="/Home/Login" method="post">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                @if (TempData["Message"] != null)
+                                {
+                                    <div style="color:red">@TempData["Message"]</div>
+                                }
+                                <div class="form-group">
+                                    <div class="position-relative has-icon-right">
+                                        <label for="exampleInputUsername" class="sr-only">Username</label>
+                                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                                        <div class="form-control-position">
+                                            <i class="icon-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="position-relative has-icon-right">
+                                        <label for="exampleInputPassword" class="sr-only">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                                        <div class="form-control-position">
+                                            <i class="icon-lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+
+                                        <button type="submit" class="btn btn-primary btn-block waves-effect waves-light wd">Log In</button>
+                                        @*<button type="button" class="btn btn-default btn-block waves-effect waves-light wd" onclick="ForgotPassword()">Forgot</button>*@
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </form>
+                </div>
+                @*<div class="card-content p-2" id="forgot" style="display:none;">
+                  
+                    <form action="/Home/ForgotPassword" method="post">
+                        
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                @if (TempData["Message"] != null)
+                                {
+                                    <div style="color:red">@TempData["Message"]</div>
+                                }
+                                <div class="form-group">
+                                    <div class="position-relative has-icon-right">
+                                        <label for="exampleInputUsername" class="sr-only">Username</label>
+                                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                                        <div class="form-control-position">
+                                            <i class="icon-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                <div class="form-row">
+                                    <div class="col-md-12">
+
+                                        <button type="submit" class="btn btn-primary btn-block waves-effect waves-light wd">Submit</button>
+                                        <button type="button" class="btn btn-default btn-block waves-effect waves-light wd" onclick="Login()">Log In</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>*@
+            </div>
+        </div>
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+        <!--End Back To Top Button-->
+    </div><!--wrapper-->
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+<script>
+    function ForgotPassword() {
+        $("#login").css("display", "none");
+        $("#forgot").css("display", "block");
+    }
+    function Login() {
+        $("#forgot").css("display", "none");
+        $("#login").css("display", "block");
+    }
+</script>
+

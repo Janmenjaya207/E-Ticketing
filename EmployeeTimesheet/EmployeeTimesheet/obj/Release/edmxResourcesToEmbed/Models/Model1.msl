@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TimeSheetModelStoreContainer" CdmEntityContainer="TimeSheetEntities">
+    <FunctionImportMapping FunctionImportName="sp_Log_Detail" FunctionName="TimeSheetModel.Store.sp_Log_Detail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TimeSheetModel.sp_Log_Detail_Result">
+          <ScalarProperty Name="appid" ColumnName="appid" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="ComplainNo" ColumnName="ComplainNo" />
+          <ScalarProperty Name="actiondate" ColumnName="actiondate" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_REPORT_COMPLAIN_Year" FunctionName="TimeSheetModel.Store.sp_REPORT_COMPLAIN_Year">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TimeSheetModel.sp_REPORT_COMPLAIN_Year_Result">
+          <ScalarProperty Name="m1Total" ColumnName="m1Total" />
+          <ScalarProperty Name="m2Total" ColumnName="m2Total" />
+          <ScalarProperty Name="m3Total" ColumnName="m3Total" />
+          <ScalarProperty Name="m4Total" ColumnName="m4Total" />
+          <ScalarProperty Name="m5Total" ColumnName="m5Total" />
+          <ScalarProperty Name="m6Total" ColumnName="m6Total" />
+          <ScalarProperty Name="m7Total" ColumnName="m7Total" />
+          <ScalarProperty Name="m8Total" ColumnName="m8Total" />
+          <ScalarProperty Name="m9Total" ColumnName="m9Total" />
+          <ScalarProperty Name="m10Total" ColumnName="m10Total" />
+          <ScalarProperty Name="m11Total" ColumnName="m11Total" />
+          <ScalarProperty Name="m12Total" ColumnName="m12Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="TimeSheetModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComplainDetails">
+      <EntityTypeMapping TypeName="TimeSheetModel.ComplainDetail">
+        <MappingFragment StoreEntitySet="ComplainDetail">
+          <ScalarProperty Name="UserRemark" ColumnName="UserRemark" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="ExecRemark" ColumnName="ExecRemark" />
+          <ScalarProperty Name="ComplainStatus" ColumnName="ComplainStatus" />
+          <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+          <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+          <ScalarProperty Name="Complain_Detail" ColumnName="Complain_Detail" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ComplainNo" ColumnName="ComplainNo" />
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+          <ScalarProperty Name="ComplainSubTypeId" ColumnName="ComplainSubTypeId" />
+          <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="ComplainId" ColumnName="ComplainId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComplainLogs">
+      <EntityTypeMapping TypeName="TimeSheetModel.ComplainLog">
+        <MappingFragment StoreEntitySet="ComplainLog">
+          <ScalarProperty Name="actiondate" ColumnName="actiondate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="usertypeid" ColumnName="usertypeid" />
+          <ScalarProperty Name="Regid" ColumnName="Regid" />
+          <ScalarProperty Name="appid" ColumnName="appid" />
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComplainTypes">
+      <EntityTypeMapping TypeName="TimeSheetModel.ComplainType">
+        <MappingFragment StoreEntitySet="ComplainType">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+          <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="TimeSheetModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emp_Type">
+      <EntityTypeMapping TypeName="TimeSheetModel.Emp_Type">
+        <MappingFragment StoreEntitySet="Emp_Type">
+          <ScalarProperty Name="EmpType" ColumnName="EmpType" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeDeatils">
+      <EntityTypeMapping TypeName="TimeSheetModel.EmployeeDeatil">
+        <MappingFragment StoreEntitySet="EmployeeDeatils">
+          <ScalarProperty Name="UAN" ColumnName="UAN" />
+          <ScalarProperty Name="PF" ColumnName="PF" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="TimeSheetModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Descriotion" ColumnName="Descriotion" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectModules">
+      <EntityTypeMapping TypeName="TimeSheetModel.ProjectModule">
+        <MappingFragment StoreEntitySet="ProjectModule">
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registrations">
+      <EntityTypeMapping TypeName="TimeSheetModel.Registration">
+        <MappingFragment StoreEntitySet="Registration">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+          <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Ulb_Id" ColumnName="Ulb_Id" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalarySlipInfoes">
+      <EntityTypeMapping TypeName="TimeSheetModel.SalarySlipInfo">
+        <MappingFragment StoreEntitySet="SalarySlipInfo">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="Modifyon" ColumnName="Modifyon" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LeaveBalance" ColumnName="LeaveBalance" />
+          <ScalarProperty Name="LopDays" ColumnName="LopDays" />
+          <ScalarProperty Name="AllowedLeave" ColumnName="AllowedLeave" />
+          <ScalarProperty Name="LeaveTaken" ColumnName="LeaveTaken" />
+          <ScalarProperty Name="AnnualLeave" ColumnName="AnnualLeave" />
+          <ScalarProperty Name="CasualLeave" ColumnName="CasualLeave" />
+          <ScalarProperty Name="SickLeave" ColumnName="SickLeave" />
+          <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+          <ScalarProperty Name="GrossDeduction" ColumnName="GrossDeduction" />
+          <ScalarProperty Name="LeaveDeduction" ColumnName="LeaveDeduction" />
+          <ScalarProperty Name="OtherDeduction" ColumnName="OtherDeduction" />
+          <ScalarProperty Name="TrustDeduction" ColumnName="TrustDeduction" />
+          <ScalarProperty Name="ESI" ColumnName="ESI" />
+          <ScalarProperty Name="TDS" ColumnName="TDS" />
+          <ScalarProperty Name="ProfessionalTax" ColumnName="ProfessionalTax" />
+          <ScalarProperty Name="ProvidentFund" ColumnName="ProvidentFund" />
+          <ScalarProperty Name="TotalGrossEarning" ColumnName="TotalGrossEarning" />
+          <ScalarProperty Name="OtherEarning" ColumnName="OtherEarning" />
+          <ScalarProperty Name="GrossEarning" ColumnName="GrossEarning" />
+          <ScalarProperty Name="PerformancePay" ColumnName="PerformancePay" />
+          <ScalarProperty Name="SpecialAllownce" ColumnName="SpecialAllownce" />
+          <ScalarProperty Name="MedicalAllow" ColumnName="MedicalAllow" />
+          <ScalarProperty Name="ConveyanceAllow" ColumnName="ConveyanceAllow" />
+          <ScalarProperty Name="HouserentAllow" ColumnName="HouserentAllow" />
+          <ScalarProperty Name="BasicPay" ColumnName="BasicPay" />
+          <ScalarProperty Name="EsicNumber" ColumnName="EsicNumber" />
+          <ScalarProperty Name="PFNO" ColumnName="PFNO" />
+          <ScalarProperty Name="DateOfJoin" ColumnName="DateOfJoin" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="PayableDays" ColumnName="PayableDays" />
+          <ScalarProperty Name="UAN" ColumnName="UAN" />
+          <ScalarProperty Name="BankAccountNO" ColumnName="BankAccountNO" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="Slipid" ColumnName="Slipid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusMasters">
+      <EntityTypeMapping TypeName="TimeSheetModel.StatusMaster">
+        <MappingFragment StoreEntitySet="StatusMaster">
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCompainTypes">
+      <EntityTypeMapping TypeName="TimeSheetModel.SubCompainType">
+        <MappingFragment StoreEntitySet="SubCompainType">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModBy" ColumnName="ModBy" />
+          <ScalarProperty Name="ModOn" ColumnName="ModOn" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+          <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+          <ScalarProperty Name="CompainsubtypeId" ColumnName="CompainsubtypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskDetails">
+      <EntityTypeMapping TypeName="TimeSheetModel.TaskDetail">
+        <MappingFragment StoreEntitySet="TaskDetail">
+          <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="AssignedTaskDetail" ColumnName="AssignedTaskDetail" />
+          <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+          <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="AssigneeId" ColumnName="AssigneeId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Templates">
+      <EntityTypeMapping TypeName="TimeSheetModel.Template">
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="TemplateContent" ColumnName="TemplateContent" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeSheetDtls">
+      <EntityTypeMapping TypeName="TimeSheetModel.TimeSheetDtl">
+        <MappingFragment StoreEntitySet="TimeSheetDtl">
+          <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+          <ScalarProperty Name="PMRemark" ColumnName="PMRemark" />
+          <ScalarProperty Name="PMId" ColumnName="PMId" />
+          <ScalarProperty Name="TLRemark" ColumnName="TLRemark" />
+          <ScalarProperty Name="TLId" ColumnName="TLId" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="TaskDetail" ColumnName="TaskDetail" />
+          <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
+          <ScalarProperty Name="TranPostDate" ColumnName="TranPostDate" />
+          <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+          <ScalarProperty Name="TransactionDesc" ColumnName="TransactionDesc" />
+          <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="TimesheetId" ColumnName="TimesheetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ULBs">
+      <EntityTypeMapping TypeName="TimeSheetModel.ULB">
+        <MappingFragment StoreEntitySet="ULB">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+          <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TimeSheetModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="TimeSheetModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Complain_Dtl">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_Complain_Dtl">
+        <MappingFragment StoreEntitySet="vw_Complain_Dtl">
+          <ScalarProperty Name="EmpType" ColumnName="EmpType" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="UserRemark" ColumnName="UserRemark" />
+          <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+          <ScalarProperty Name="ComplainSubTypeId" ColumnName="ComplainSubTypeId" />
+          <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+          <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+          <ScalarProperty Name="Action_Date" ColumnName="Action_Date" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="ExecRemark" ColumnName="ExecRemark" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="ComplainStatus" ColumnName="ComplainStatus" />
+          <ScalarProperty Name="assnname" ColumnName="assnname" />
+          <ScalarProperty Name="Assigned_Date" ColumnName="Assigned_Date" />
+          <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Receive_Date" ColumnName="Receive_Date" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="rcvname" ColumnName="rcvname" />
+          <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+          <ScalarProperty Name="ComPriority" ColumnName="ComPriority" />
+          <ScalarProperty Name="Pin" ColumnName="Pin" />
+          <ScalarProperty Name="PriorityId" ColumnName="PriorityId" />
+          <ScalarProperty Name="Complain_Detail" ColumnName="Complain_Detail" />
+          <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="ComplainNo" ColumnName="ComplainNo" />
+          <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+          <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+          <ScalarProperty Name="ComplainId" ColumnName="ComplainId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Complain_Sub_Type">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_Complain_Sub_Type">
+        <MappingFragment StoreEntitySet="vw_Complain_Sub_Type">
+          <ScalarProperty Name="CompainsubtypeId" ColumnName="CompainsubtypeId" />
+          <ScalarProperty Name="SubtypeName" ColumnName="SubtypeName" />
+          <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Project_Details">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_Project_Details">
+        <MappingFragment StoreEntitySet="vw_Project_Details">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Descriotion" ColumnName="Descriotion" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_REPORT_COMPLAIN">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_REPORT_COMPLAIN">
+        <MappingFragment StoreEntitySet="vw_REPORT_COMPLAIN">
+          <ScalarProperty Name="Pending" ColumnName="Pending" />
+          <ScalarProperty Name="Close" ColumnName="Close" />
+          <ScalarProperty Name="Reopen" ColumnName="Reopen" />
+          <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+          <ScalarProperty Name="Resolved" ColumnName="Resolved" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+          <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_REPORT_COMPLAIN_Month">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_REPORT_COMPLAIN_Month">
+        <MappingFragment StoreEntitySet="vw_REPORT_COMPLAIN_Month">
+          <ScalarProperty Name="mPending" ColumnName="mPending" />
+          <ScalarProperty Name="mClose" ColumnName="mClose" />
+          <ScalarProperty Name="mReopen" ColumnName="mReopen" />
+          <ScalarProperty Name="mRejected" ColumnName="mRejected" />
+          <ScalarProperty Name="mResolved" ColumnName="mResolved" />
+          <ScalarProperty Name="mAssigned" ColumnName="mAssigned" />
+          <ScalarProperty Name="mTotal" ColumnName="mTotal" />
+          <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+          <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Task_Dtl">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_Task_Dtl">
+        <MappingFragment StoreEntitySet="vw_Task_Dtl">
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="trncreatedate" ColumnName="trncreatedate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+          <ScalarProperty Name="Assugn_name" ColumnName="Assugn_name" />
+          <ScalarProperty Name="assignid" ColumnName="assignid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+          <ScalarProperty Name="AssignedTaskDetail" ColumnName="AssignedTaskDetail" />
+          <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Timesheet_Dtl">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_Timesheet_Dtl">
+        <MappingFragment StoreEntitySet="vw_Timesheet_Dtl">
+          <ScalarProperty Name="TaskDetail" ColumnName="TaskDetail" />
+          <ScalarProperty Name="trnpostdate" ColumnName="trnpostdate" />
+          <ScalarProperty Name="trncreatedate" ColumnName="trncreatedate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="IsApprived" ColumnName="IsApprived" />
+          <ScalarProperty Name="PMRemark" ColumnName="PMRemark" />
+          <ScalarProperty Name="pmid" ColumnName="pmid" />
+          <ScalarProperty Name="PMName" ColumnName="PMName" />
+          <ScalarProperty Name="TLRemark" ColumnName="TLRemark" />
+          <ScalarProperty Name="tlid" ColumnName="tlid" />
+          <ScalarProperty Name="TLName" ColumnName="TLName" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="PendingReason" ColumnName="PendingReason" />
+          <ScalarProperty Name="TranPostDate" ColumnName="TranPostDate" />
+          <ScalarProperty Name="TranCreationDate" ColumnName="TranCreationDate" />
+          <ScalarProperty Name="TransactionDesc" ColumnName="TransactionDesc" />
+          <ScalarProperty Name="TransactionName" ColumnName="TransactionName" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="TimesheetId" ColumnName="TimesheetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_user_detail">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_user_detail">
+        <MappingFragment StoreEntitySet="vw_user_detail">
+          <ScalarProperty Name="ULBName" ColumnName="ULBName" />
+          <ScalarProperty Name="UlbID" ColumnName="UlbID" />
+          <ScalarProperty Name="ComplainName" ColumnName="ComplainName" />
+          <ScalarProperty Name="ComplainTypeId" ColumnName="ComplainTypeId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="Contactno" ColumnName="Contactno" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_complain_avg_time_calculator">
+      <EntityTypeMapping TypeName="TimeSheetModel.vw_complain_avg_time_calculator">
+        <MappingFragment StoreEntitySet="vw_complain_avg_time_calculator">
+          <ScalarProperty Name="avgtime_low" ColumnName="avgtime_low" />
+          <ScalarProperty Name="PriorityLow" ColumnName="PriorityLow" />
+          <ScalarProperty Name="avgtime_med" ColumnName="avgtime_med" />
+          <ScalarProperty Name="PriorityMedium" ColumnName="PriorityMedium" />
+          <ScalarProperty Name="avgtime_high" ColumnName="avgtime_high" />
+          <ScalarProperty Name="PriorityHigh" ColumnName="PriorityHigh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

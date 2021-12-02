@@ -1,0 +1,219 @@
+﻿@model EmployeeTimesheet.Models.ComplainType
+@{
+    ViewBag.Title = "ComplainType";
+    Layout = "~/Views/Shared/TSLayout.cshtml";
+}
+<h2></h2>
+<style>
+    .tdwidth {
+        width: 50% !important;
+    }
+
+    @@media (max-width:576px) {
+        .mts {
+            margin-top: 0px !important;
+        }
+    }
+
+    .mts {
+        margin-top: 28px;
+    }
+
+    label {
+        color: #212121;
+        font-weight: 600 !important;
+    }
+
+    a {
+        color: #e0ba00;
+    }
+
+    .rules {
+        color: #b56800 !important;
+        font-weight: 700;
+    }
+
+    @@media (min-width:576px) {
+        .modal-dialog1 {
+            max-width: 800px;
+            margin: 1.75rem auto
+        }
+    }
+
+    .modaloverflow {
+        height: 600px;
+        overflow-y: auto;
+    }
+
+    table.dataTable thead > tr > th {
+        color: #fff;
+        background-color: #223035;
+    }
+
+    .table th {
+        padding: 7px !important;
+    }
+    .btn1 {
+        padding: 2px 6px;
+    }
+
+
+    .btn-group {
+        box-shadow: none;
+    }
+
+        .btn-group > .btn-group:not(:first-child) > .btn, .btn-group > .btn:not(:first-child) {
+            border-top-left-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+        }
+
+        .btn-group > .btn-group:not(:last-child) > .btn, .btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+            border-top-right-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }
+</style>
+<div class="clearfix"></div>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumb-->
+        <!-- End Breadcrumb-->
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Ticket Type</div>
+                    <div class="card-body">
+                        
+                        @{string confirmMessage = Convert.ToString(TempData["Message"]);
+                            string warningMessage = Convert.ToString(TempData["WarningMessage"]);
+                            if (!string.IsNullOrEmpty(confirmMessage))
+                            {
+                                <div class="alert alert-success alert-dismissable" id="divSuccessMessage">
+                                    @confirmMessage
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                </div>
+                            }
+                            if (!string.IsNullOrEmpty(warningMessage))
+                            {
+                                <div class="alert alert-warning alert-dismissable" id="divSuccessMessage">
+                                    @warningMessage
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                </div>
+                            }
+                        }
+                        @using (Html.BeginForm("ComplainType", "Transaction", new { FormMethod.Post }))
+                        {
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Complain Type:</label>
+                                        @Html.HiddenFor(m => m.ComplainTypeId)
+
+                                        @Html.TextBoxFor(m => m.ComplainName, new { @class = "form-control", @required = true })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="submit" id="btnsubmit" class="btn btn-primary mts">Submit</button>
+                                        <button type="submit" class="btn btn-danger mts">Cancel</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="form-row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4 pb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"><i class="fa fa-table"></i> Ticket Type List</div>
+
+                    @if (ViewBag.data == null)
+                    {
+                        <div class="card-body">
+                            <div id="FormOne">
+                                <div class="row">
+                                    <div class="col-md-12">No Ticket found.</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="default-datatable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <table id="default-datatable" class="table table-bordered dataTable" role="grid" aria-describedby="default-datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 46px;">Sl No.</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 91px;">Ticket Type</th>
+                                                <th class="sorting" tabindex="0" aria-controls="default-datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 70px;">Action</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int count = 0;}
+                                            @foreach (var item in ViewBag.data)
+                                            {
+                                                count = count + 1;
+                                            <tr role="row" class="even">
+                                                <td>@count</td>
+                                                <td>@item.ComplainName</td>
+                                                
+                                                <td>
+                                                    @*<a href="/Transaction/ManageClient?id=@item.ClientId" onclick="ChangeText()">Edit</a>|
+                                                    <a href="#" onclick="Delete(@item.ClientId)">Delete</a>*@
+                                                    <div class="btn-group">
+                                                        <div class="btn-group">
+                                                            <a href="/Transaction/ComplainType?id=@item.ComplainTypeId"><button type="button" id="" class="btn btn-outline-primary waves-effect waves-light m-1 btn1"> <i class="fa fa-edit"></i></button></a>
+                                                            <button type="button" class="btn btn-outline-danger waves-effect waves-light m-1 btn1" onclick="Delete(@item.ComplainTypeId)"> <i class="fa fa-trash-o"></i> </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- End Row-->
+    </div>
+    <!-- End container-fluid-->
+
+</div><!--End content-wrapper-->
+<!--Start Back To Top Button-->
+<a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+<!--End Back To Top Button-->
+<script>
+    function ChangeText() {
+        $("#btnsubmit").text("Update");
+    }
+    function Delete(id) {
+        if (confirm("Are you sure want to delete this ticket type"))
+        $.ajax({
+            async: false,
+            url: "/Transaction/DeleteComplain",
+            type: "post",
+            dataType: "json",
+            data: { id: id },
+            success: function (app) {
+                if (app == true) {
+                    location.href = "/Transaction/ComplainType";
+                }
+            }
+        });
+    }
+</script>
